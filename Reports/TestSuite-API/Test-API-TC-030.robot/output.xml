@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240611 10:32:24.068" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-API-TC-030" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite\Test-API-TC-030.robot">
+<test id="s1-t1" name="Test-API-TC-030" line="11">
+<kw name="Open API" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the API page</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240611 10:32:25.122" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000244138F0C88&gt;</msg>
+<status status="PASS" starttime="20240611 10:32:25.121" endtime="20240611 10:32:25.122"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:32:25.122" endtime="20240611 10:32:25.122"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:32:25.122" endtime="20240611 10:32:25.123"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:32:25.123" endtime="20240611 10:32:25.123"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:32:25.123" endtime="20240611 10:32:25.124"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:32:25.124" endtime="20240611 10:32:25.124"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240611 10:32:25.125" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite</msg>
+<status status="PASS" starttime="20240611 10:32:25.125" endtime="20240611 10:32:25.125"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240611 10:32:25.126" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240611 10:32:25.126" endtime="20240611 10:32:27.664"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240611 10:32:27.664" endtime="20240611 10:32:27.692"/>
+</kw>
+<status status="PASS" starttime="20240611 10:32:25.120" endtime="20240611 10:32:27.692"/>
+</kw>
+<status status="PASS" starttime="20240611 10:32:25.099" endtime="20240611 10:32:27.693"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_api_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240611 10:32:27.694" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<status status="PASS" starttime="20240611 10:32:27.693" endtime="20240611 10:32:29.325"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-api-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240611 10:32:29.518" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-api-page.png"&gt;&lt;img src="ng-api-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240611 10:32:29.325" endtime="20240611 10:32:29.518"/>
+</kw>
+<status status="PASS" starttime="20240611 10:32:25.099" endtime="20240611 10:32:29.518"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>${api_base_endpoint}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240611 10:32:29.519" level="INFO">Creating Session using : alias=API_testing, url=http://localhost:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240611 10:32:29.519" endtime="20240611 10:32:29.520"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>layer=msg_iodc:rgb_natural</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240611 10:32:29.521" level="INFO">${params} = {'layer': 'msg_iodc:rgb_natural'}</msg>
+<status status="PASS" starttime="20240611 10:32:29.520" endtime="20240611 10:32:29.522"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>API_testing</arg>
+<arg>list-available-times</arg>
+<arg>params=${params}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240611 10:32:30.559" level="INFO">GET Request : url=http://localhost:5000/list-available-times?layer=msg_iodc%3Argb_natural 
+ path_url=/list-available-times?layer=msg_iodc%3Argb_natural 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240611 10:32:30.559" level="INFO">GET Response : url=http://localhost:5000/list-available-times?layer=msg_iodc%3Argb_natural 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Tue, 11 Jun 2024 09:32:30 GMT', 'Content-Type': 'application/json', 'Content-Length': '52332', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"times": ["2024-06-11T08:45:00.000Z", "2024-06-11T08:30:00.000Z", "2024-06-11T08:15:00.000Z", "2024-06-11T08:00:00.000Z", "2024-06-11T07:45:00.000Z", "2024-06-11T07:30:00.000Z", "2024-06-11T07:15:00.000Z", "2024-06-11T07:00:00.000Z", "2024-06-11T06:45:00.000Z", "2024-06-11T06:30:00.000Z", "2024-06-11T06:15:00.000Z", "2024-06-11T06:00:00.000Z", "2024-06-11T05:45:00.000Z", "2024-06-11T05:30:00.000Z", "2024-06-11T05:15:00.000Z", "2024-06-11T05:00:00.000Z", "2024-06-11T04:45:00.000Z", "2024-06-11T04:30:00.000Z", "2024-06-11T04:15:00.000Z", "2024-06-11T04:00:00.000Z", "2024-06-11T03:45:00.000Z", "2024-06-11T03:30:00.000Z", "2024-06-11T03:15:00.000Z", "2024-06-11T03:00:00.000Z", "2024-06-11T02:45:00.000Z", "2024-06-11T02:30:00.000Z", "2024-06-11T02:15:00.000Z", "2024-06-11T02:00:00.000Z", "2024-06-11T01:45:00.000Z", "2024-06-11T01:30:00.000Z", "2024-06-11T01:15:00.000Z", "2024-06-11T01:00:00.000Z", "2024-06-11T00:45:00.000Z", "2024-06-11T00:30:00.000Z", "2024-06-11T00:15:00.000Z", "2024-06-11T00:00:00.000Z", "2024-06-10T23:45:00.000Z", "2024-06-10T23:30:00.000Z", "2024-06-10T23:15:00.000Z", "2024-06-10T23:00:00.000Z", "2024-06-10T22:45:00.000Z", "2024-06-10T22:30:00.000Z", "2024-06-10T22:15:00.000Z", "2024-06-10T22:00:00.000Z", "2024-06-10T21:45:00.000Z", "2024-06-10T21:30:00.000Z", "2024-06-10T21:15:00.000Z", "2024-06-10T21:00:00.000Z", "2024-06-10T20:45:00.000Z", "2024-06-10T20:30:00.000Z", "2024-06-10T20:15:00.000Z", "2024-06-10T20:00:00.000Z", "2024-06-10T19:45:00.000Z", "2024-06-10T19:30:00.000Z", "2024-06-10T19:15:00.000Z", "2024-06-10T19:00:00.000Z", "2024-06-10T18:45:00.000Z", "2024-06-10T18:30:00.000Z", "2024-06-10T18:15:00.000Z", "2024-06-10T18:00:00.000Z", "2024-06-10T17:45:00.000Z", "2024-06-10T17:30:00.000Z", "2024-06-10T17:15:00.000Z", "2024-06-10T17:00:00.000Z", "2024-06-10T16:45:00.000Z", "2024-06-10T16:30:00.000Z", "2024-06-10T16:15:00.000Z", "2024-06-10T16:00:00.000Z", "2024-06-10T15:45:00.000Z", "2024-06-10T15:30:00.000Z", "2024-06-10T15:15:00.000Z", "2024-06-10T15:00:00.000Z", "2024-06-10T14:45:00.000Z", "2024-06-10T14:30:00.000Z", "2024-06-10T14:15:00.000Z", "2024-06-10T14:00:00.000Z", "2024-06-10T13:45:00.000Z", "2024-06-10T13:30:00.000Z", "2024-06-10T13:15:00.000Z", "2024-06-10T13:00:00.000Z", "2024-06-10T12:45:00.000Z", "2024-06-10T12:30:00.000Z", "2024-06-10T12:15:00.000Z", "2024-06-10T12:00:00.000Z", "2024-06-10T11:45:00.000Z", "2024-06-10T11:30:00.000Z", "2024-06-10T11:15:00.000Z", "2024-06-10T11:00:00.000Z", "2024-06-10T10:45:00.000Z", "2024-06-10T10:30:00.000Z", "2024-06-10T10:15:00.000Z", "2024-06-10T10:00:00.000Z", "2024-06-10T09:45:00.000Z", "2024-06-10T09:30:00.000Z", "2024-06-10T09:15:00.000Z", "2024-06-10T09:00:00.000Z", "2024-06-10T08:45:00.000Z", "2024-06-10T08:30:00.000Z", "2024-06-10T08:15:00.000Z", "2024-06-10T08:00:00.000Z", "2024-06-10T07:45:00.000Z", "2024-06-10T07:30:00.000Z", "2024-06-10T07:15:00.000Z", "2024-06-10T07:00:00.000Z", "2024-06-10T06:45:00.000Z", "2024-06-10T06:30:00.000Z", "2024-06-10T06:15:00.000Z", "2024-06-10T06:00:00.000Z", "2024-06-10T05:45:00.000Z", "2024-06-10T05:30:00.000Z", "2024-06-10T05:15:00.000Z", "2024-06-10T05:00:00.000Z", "2024-06-10T04:45:00.000Z", "2024-06-10T04:30:00.000Z", "2024-06-10T04:15:00.000Z", "2024-06-10T04:00:00.000Z", "2024-06-10T03:45:00.000Z", "2024-06-10T03:30:00.000Z", "2024-06-10T03:15:00.000Z", "2024-06-10T03:00:00.000Z", "2024-06-10T02:45:00.000Z", "2024-06-10T02:30:00.000Z", "2024-06-10T02:15:00.000Z", "2024-06-10T02:00:00.000Z", "2024-06-10T01:45:00.000Z", "2024-06-10T01:30:00.000Z", "2024-06-10T01:15:00.000Z", "2024-06-10T01:00:00.000Z", "2024-06-10T00:45:00.000Z", "2024-06-10T00:30:00.000Z", "2024-06-10T00:15:00.000Z", "2024-06-10T00:00:00.000Z", "2024-06-09T23:45:00.000Z", "2024-06-09T23:30:00.000Z", "2024-06-09T23:15:00.000Z", "2024-06-09T23:00:00.000Z", "2024-06-09T22:45:00.000Z", "2024-06-09T22:30:00.000Z", "2024-06-09T22:15:00.000Z", "2024-06-09T22:00:00.000Z", "2024-06-09T21:45:00.000Z", "2024-06-09T21:30:00.000Z", "2024-06-09T21:15:00.000Z", "2024-06-09T21:00:00.000Z", "2024-06-09T20:45:00.000Z", "2024-06-09T20:30:00.000Z", "2024-06-09T20:15:00.000Z", "2024-06-09T20:00:00.000Z", "2024-06-09T19:45:00.000Z", "2024-06-09T19:30:00.000Z", "2024-06-09T19:15:00.000Z", "2024-06-09T19:00:00.000Z", "2024-06-09T18:45:00.000Z", "2024-06-09T18:30:00.000Z", "2024-06-09T18:15:00.000Z", "2024-06-09T18:00:00.000Z", "2024-06-09T17:45:00.000Z", "2024-06-09T17:30:00.000Z", "2024-06-09T17:15:00.000Z", "2024-06-09T17:00:00.000Z", "2024-06-09T16:45:00.000Z", "2024-06-09T16:30:00.000Z", "2024-06-09T16:15:00.000Z", "2024-06-09T16:00:00.000Z", "2024-06-09T15:45:00.000Z", "2024-06-09T15:30:00.000Z", "2024-06-09T15:15:00.000Z", "2024-06-09T15:00:00.000Z", "2024-06-09T14:45:00.000Z", "2024-06-09T14:30:00.000Z", "2024-06-09T14:15:00.000Z", "2024-06-09T14:00:00.000Z", "2024-06-09T13:45:00.000Z", "2024-06-09T13:30:00.000Z", "2024-06-09T13:15:00.000Z", "2024-06-09T13:00:00.000Z", "2024-06-09T12:45:00.000Z", "2024-06-09T12:30:00.000Z", "2024-06-09T12:15:00.000Z", "2024-06-09T12:00:00.000Z", "2024-06-09T11:45:00.000Z", "2024-06-09T11:30:00.000Z", "2024-06-09T11:15:00.000Z", "2024-06-09T11:00:00.000Z", "2024-06-09T10:45:00.000Z", "2024-06-09T10:30:00.000Z", "2024-06-09T10:15:00.000Z", "2024-06-09T10:00:00.000Z", "2024-06-09T09:45:00.000Z", "2024-06-09T09:30:00.000Z", "2024-06-09T09:15:00.000Z", "2024-06-09T09:00:00.000Z", "2024-06-09T08:45:00.000Z", "2024-06-09T08:30:00.000Z", "2024-06-09T08:15:00.000Z", "2024-06-09T08:00:00.000Z", "2024-06-09T07:45:00.000Z", "2024-06-09T07:30:00.000Z", "2024-06-09T07:15:00.000Z", "2024-06-09T07:00:00.000Z", "2024-06-09T06:45:00.000Z", "2024-06-09T06:30:00.000Z", "2024-06-09T06:15:00.000Z", "2024-06-09T06:00:00.000Z", "2024-06-09T05:45:00.000Z", "2024-06-09T05:30:00.000Z", "2024-06-09T05:15:00.000Z", "2024-06-09T05:00:00.000Z", "2024-06-09T04:45:00.000Z", "2024-06-09T04:30:00.000Z", "2024-06-09T04:15:00.000Z", "2024-06-09T04:00:00.000Z", "2024-06-09T03:45:00.000Z", "2024-06-09T03:30:00.000Z", "2024-06-09T03:15:00.000Z", "2024-06-09T03:00:00.000Z", "2024-06-09T02:45:00.000Z", "2024-06-09T02:30:00.000Z", "2024-06-09T02:15:00.000Z", "2024-06-09T02:00:00.000Z", "2024-06-09T01:45:00.000Z", "2024-06-09T01:30:00.000Z", "2024-06-09T01:15:00.000Z", "2024-06-09T01:00:00.000Z", "2024-06-09T00:45:00.000Z", "2024-06-09T00:30:00.000Z", "2024-06-09T00:15:00.000Z", "2024-06-09T00:00:00.000Z", "2024-06-08T23:45:00.000Z", "2024-06-08T23:30:00.000Z", "2024-06-08T23:15:00.000Z", "2024-06-08T23:00:00.000Z", "2024-06-08T22:45:00.000Z", "2024-06-08T22:30:00.000Z", "2024-06-08T22:15:00.000Z", "2024-06-08T22:00:00.000Z", "2024-06-08T21:45:00.000Z", "2024-06-08T21:30:00.000Z", "2024-06-08T21:15:00.000Z", "2024-06-08T21:00:00.000Z", "2024-06-08T20:45:00.000Z", "2024-06-08T20:30:00.000Z", "2024-06-08T20:15:00.000Z", "2024-06-08T20:00:00.000Z", "2024-06-08T19:45:00.000Z", "2024-06-08T19:30:00.000Z", "2024-06-08T19:15:00.000Z", "2024-06-08T19:00:00.000Z", "2024-06-08T18:45:00.000Z", "2024-06-08T18:30:00.000Z", "2024-06-08T18:15:00.000Z", "2024-06-08T18:00:00.000Z", "2024-06-08T17:45:00.000Z", "2024-06-08T17:30:00.000Z", "2024-06-08T17:15:00.000Z", "2024-06-08T17:00:00.000Z", "2024-06-08T16:45:00.000Z", "2024-06-08T16:30:00.000Z", "2024-06-08T16:15:00.000Z", "2024-06-08T16:00:00.000Z", "2024-06-08T15:45:00.000Z", "2024-06-08T15:30:00.000Z", "2024-06-08T15:15:00.000Z", "2024-06-08T15:00:00.000Z", "2024-06-08T14:45:00.000Z", "2024-06-08T14:30:00.000Z", "2024-06-08T14:15:00.000Z", "2024-06-08T14:00:00.000Z", "2024-06-08T13:45:00.000Z", "2024-06-08T13:30:00.000Z", "2024-06-08T13:15:00.000Z", "2024-06-08T13:00:00.000Z", "2024-06-08T12:45:00.000Z", "2024-06-08T12:30:00.000Z", "2024-06-08T12:15:00.000Z", "2024-06-08T12:00:00.000Z", "2024-06-08T11:45:00.000Z", "2024-06-08T11:30:00.000Z", "2024-06-08T11:15:00.000Z", "2024-06-08T11:00:00.000Z", "2024-06-08T10:45:00.000Z", "2024-06-08T10:30:00.000Z", "2024-06-08T10:15:00.000Z", "2024-06-08T10:00:00.000Z", "2024-06-08T09:45:00.000Z", "2024-06-08T09:30:00.000Z", "2024-06-08T09:15:00.000Z", "2024-06-08T09:00:00.000Z", "2024-06-08T08:45:00.000Z"], "_links": {"add time=2024-06-11T08:45:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T08:45:00.000Z", "add time=2024-06-11T08:30:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T08:30:00.000Z", "add time=2024-06-11T08:15:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T08:15:00.000Z", "add time=2024-06-11T08:00:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T08:00:00.000Z", "add time=2024-06-11T07:45:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T07:45:00.000Z", "add time=2024-06-11T07:30:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T07:30:00.000Z", "add time=2024-06-11T07:15:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T07:15:00.000Z", "add time=2024-06-11T07:00:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T07:00:00.000Z", "add time=2024-06-11T06:45:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T06:45:00.000Z", "add time=2024-06-11T06:30:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T06:30:00.000Z", "add time=2024-06-11T06:15:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T06:15:00.000Z", "add time=2024-06-11T06:00:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-11T06:00:00.000Z", "add time=2024-06-11T05:45:00.000Z as image param... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20240611 10:32:30.563" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240611 10:32:29.522" endtime="20240611 10:32:30.563"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json_response}</var>
+<arg>${get_response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240611 10:32:30.567" level="INFO">${json_response} = {'times': ['2024-06-11T08:45:00.000Z', '2024-06-11T08:30:00.000Z', '2024-06-11T08:15:00.000Z', '2024-06-11T08:00:00.000Z', '2024-06-11T07:45:00.000Z', '2024-06-11T07:30:00.000Z', '2024-06-11T07:15:00....</msg>
+<status status="PASS" starttime="20240611 10:32:30.563" endtime="20240611 10:32:30.567"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${count}</var>
+<arg>${json_response['times']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:32:30.569" level="INFO">Length is 289</msg>
+<msg timestamp="20240611 10:32:30.569" level="INFO">${count} = 289</msg>
+<status status="PASS" starttime="20240611 10:32:30.567" endtime="20240611 10:32:30.569"/>
+</kw>
+<kw name="Should Be Larger Than" library="commonKeywords">
+<arg>${count}</arg>
+<arg>0</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${value_1} &lt;= ${value_2}</arg>
+<arg>Fail</arg>
+<arg>The value ${value_1} is not larger than ${value_2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240611 10:32:30.571" endtime="20240611 10:32:30.572"/>
+</kw>
+<status status="PASS" starttime="20240611 10:32:30.570" endtime="20240611 10:32:30.572"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${count}</var>
+<arg>${json_response['_links']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:32:30.573" level="INFO">Length is 289</msg>
+<msg timestamp="20240611 10:32:30.574" level="INFO">${count} = 289</msg>
+<status status="PASS" starttime="20240611 10:32:30.572" endtime="20240611 10:32:30.574"/>
+</kw>
+<kw name="Should Be Larger Than" library="commonKeywords">
+<arg>${count}</arg>
+<arg>0</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${value_1} &lt;= ${value_2}</arg>
+<arg>Fail</arg>
+<arg>The value ${value_1} is not larger than ${value_2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240611 10:32:30.576" endtime="20240611 10:32:30.576"/>
+</kw>
+<status status="PASS" starttime="20240611 10:32:30.574" endtime="20240611 10:32:30.576"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240611 10:32:30.577" endtime="20240611 10:32:33.272"/>
+</kw>
+<doc>Verify call endpoint and check that payload does contain time data
+The following steps are executed:
+- Open the API page
+- Call list-available-times with a parameter
+- Verify that the response contains values</doc>
+<status status="PASS" starttime="20240611 10:32:25.095" endtime="20240611 10:32:33.273"/>
+</test>
+<doc>This test verifies that if include the parameters (name of the layer) the API functions retrieve a time data.</doc>
+<status status="PASS" starttime="20240611 10:32:24.072" endtime="20240611 10:32:33.276"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-API-TC-030">Test-API-TC-030</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

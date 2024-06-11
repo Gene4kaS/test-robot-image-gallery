@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240607 11:30:48.449" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-GUI-TC-050" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite\Test-GUI-TC-050.robot">
+<test id="s1-t1" name="Test-GUI-TC-050" line="11">
+<kw name="Open NG GALLERY" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the NG GALLERY webpage</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240607 11:30:48.986" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000243D3013DA0&gt;</msg>
+<status status="PASS" starttime="20240607 11:30:48.986" endtime="20240607 11:30:48.986"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 11:30:48.987" endtime="20240607 11:30:48.987"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 11:30:48.987" endtime="20240607 11:30:48.987"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 11:30:48.987" endtime="20240607 11:30:48.988"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 11:30:48.988" endtime="20240607 11:30:48.988"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 11:30:48.988" endtime="20240607 11:30:48.988"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240607 11:30:48.988" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite</msg>
+<status status="PASS" starttime="20240607 11:30:48.988" endtime="20240607 11:30:48.988"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240607 11:30:48.989" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240607 11:30:48.988" endtime="20240607 11:30:51.434"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240607 11:30:51.435" endtime="20240607 11:30:51.461"/>
+</kw>
+<status status="PASS" starttime="20240607 11:30:48.986" endtime="20240607 11:30:51.461"/>
+</kw>
+<status status="PASS" starttime="20240607 11:30:48.979" endtime="20240607 11:30:51.461"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_galleryl_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240607 11:30:51.461" level="INFO">Opening url 'http://localhost:80/'</msg>
+<status status="PASS" starttime="20240607 11:30:51.461" endtime="20240607 11:30:52.307"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-gallery-main-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 11:30:52.423" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-gallery-main-page.png"&gt;&lt;img src="ng-gallery-main-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 11:30:52.307" endtime="20240607 11:30:52.423"/>
+</kw>
+<status status="PASS" starttime="20240607 11:30:48.978" endtime="20240607 11:30:52.423"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20240607 11:30:52.425" endtime="20240607 11:30:52.426"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 11:30:52.429" level="INFO">Clicking element 'xpath://*[@class='mat-mdc-select-value']'.</msg>
+<status status="PASS" starttime="20240607 11:30:52.426" endtime="20240607 11:30:53.579"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX_PRODUCT_TYPE}//*[contains(text(),' MSGIODC Visualised Products ')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 11:30:53.581" level="INFO">Clicking element 'xpath://*[@id='cdk-overlay-0']//*[contains(text(),' MSGIODC Visualised Products ')]'.</msg>
+<status status="PASS" starttime="20240607 11:30:53.580" endtime="20240607 11:30:54.714"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240607 11:30:57.729" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20240607 11:30:54.715" endtime="20240607 11:30:57.729"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LIST_BOX_LAYERS}//*[contains(text(),'Cloud Top Height - MSG - Indian Ocean')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 11:30:57.731" level="INFO">Clicking element 'xpath://*[@role="listbox"]//*[contains(text(),'Cloud Top Height - MSG - Indian Ocean')]'.</msg>
+<status status="PASS" starttime="20240607 11:30:57.730" endtime="20240607 11:30:58.816"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=regions-for-41-degree-product-type.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 11:30:59.924" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="regions-for-41-degree-product-type.png"&gt;&lt;img src="regions-for-41-degree-product-type.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 11:30:58.817" endtime="20240607 11:30:59.924"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 11:30:59.925" level="INFO">Clicking element 'xpath://*[@class='mat-mdc-select-value']'.</msg>
+<status status="PASS" starttime="20240607 11:30:59.925" endtime="20240607 11:31:01.150"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX_PRODUCT_TYPE}//*[contains(text(),' Meteosat 0 degree RGB Composites ')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 11:31:01.152" level="INFO">Clicking element 'xpath://*[@id='cdk-overlay-0']//*[contains(text(),' Meteosat 0 degree RGB Composites ')]'.</msg>
+<status status="PASS" starttime="20240607 11:31:01.151" endtime="20240607 11:31:02.248"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240607 11:31:05.256" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20240607 11:31:02.249" endtime="20240607 11:31:05.256"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LIST_BOX_LAYERS}//*[contains(text(),'Dust RGB - MSG - 0 degree')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 11:31:05.259" level="INFO">Clicking element 'xpath://*[@role="listbox"]//*[contains(text(),'Dust RGB - MSG - 0 degree')]'.</msg>
+<status status="PASS" starttime="20240607 11:31:05.258" endtime="20240607 11:31:06.347"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=regions-for-0-degree-product-type.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 11:31:07.228" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="regions-for-0-degree-product-type.png"&gt;&lt;img src="regions-for-0-degree-product-type.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 11:31:06.347" endtime="20240607 11:31:07.229"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240607 11:31:07.230" endtime="20240607 11:31:10.411"/>
+</kw>
+<doc>Each of type of imagery should have their group of regions.
+The following steps are executed:
+- Open the NG Gallery page
+- Click on the drop down box
+- Click on the product type 'MSGIODC Visualized Products' (one of the type 41 degree)
+- Click on the layers 'Cloud Top Height – MSG – Indian Ocean'
+- Verify if all regions are visualized
+- Click on the product type 'Meteosat 0 degree RGB Composites' (one of the type 0 degree)
+- Click on the layers 'Dust RGB – MSG – 0 degree'
+- Verify if all regions are visualized</doc>
+<status status="PASS" starttime="20240607 11:30:48.975" endtime="20240607 11:31:10.412"/>
+</test>
+<doc>For the 41.5 degree and 0 degree should be their group of regions.</doc>
+<status status="PASS" starttime="20240607 11:30:48.454" endtime="20240607 11:31:10.415"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-GUI-TC-050">Test-GUI-TC-050</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

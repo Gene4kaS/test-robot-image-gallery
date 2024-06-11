@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240607 14:15:38.588" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-GUI-TC-090" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite\Test-GUI-TC-090.robot">
+<test id="s1-t1" name="Test-GUI-TC-050" line="11">
+<kw name="Open NG GALLERY" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the NG GALLERY webpage</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240607 14:15:39.124" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002601B193E80&gt;</msg>
+<status status="PASS" starttime="20240607 14:15:39.124" endtime="20240607 14:15:39.124"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 14:15:39.125" endtime="20240607 14:15:39.125"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 14:15:39.125" endtime="20240607 14:15:39.125"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 14:15:39.125" endtime="20240607 14:15:39.126"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 14:15:39.126" endtime="20240607 14:15:39.127"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 14:15:39.127" endtime="20240607 14:15:39.127"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240607 14:15:39.128" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite</msg>
+<status status="PASS" starttime="20240607 14:15:39.127" endtime="20240607 14:15:39.129"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240607 14:15:39.130" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240607 14:15:39.130" endtime="20240607 14:15:41.836"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240607 14:15:41.837" endtime="20240607 14:15:41.860"/>
+</kw>
+<status status="PASS" starttime="20240607 14:15:39.124" endtime="20240607 14:15:41.860"/>
+</kw>
+<status status="PASS" starttime="20240607 14:15:39.117" endtime="20240607 14:15:41.860"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_galleryl_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240607 14:15:41.862" level="INFO">Opening url 'http://localhost:80/'</msg>
+<status status="PASS" starttime="20240607 14:15:41.860" endtime="20240607 14:15:42.819"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-gallery-main-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 14:15:43.107" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-gallery-main-page.png"&gt;&lt;img src="ng-gallery-main-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 14:15:42.820" endtime="20240607 14:15:43.107"/>
+</kw>
+<status status="PASS" starttime="20240607 14:15:39.116" endtime="20240607 14:15:43.107"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20240607 14:15:43.108" endtime="20240607 14:15:43.108"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 14:15:43.112" level="INFO">Clicking element 'xpath://*[@class='mat-mdc-select-value']'.</msg>
+<status status="PASS" starttime="20240607 14:15:43.110" endtime="20240607 14:15:44.433"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX_PRODUCT_TYPE}//*[contains(text(),' Meteosat 0 degree RGB Composites ')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 14:15:44.435" level="INFO">Clicking element 'xpath://*[@id='cdk-overlay-0']//*[contains(text(),' Meteosat 0 degree RGB Composites ')]'.</msg>
+<status status="PASS" starttime="20240607 14:15:44.434" endtime="20240607 14:15:45.582"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240607 14:15:48.593" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20240607 14:15:45.583" endtime="20240607 14:15:48.593"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LIST_BOX_LAYERS}//*[contains(text(),'Dust RGB - MSG - 0 degree')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 14:15:48.609" level="INFO">Clicking element 'xpath://*[@role="listbox"]//*[contains(text(),'Dust RGB - MSG - 0 degree')]'.</msg>
+<status status="PASS" starttime="20240607 14:15:48.608" endtime="20240607 14:15:49.753"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${TIMELINE_CURRENT_TIME_MINUS_HOUR}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 14:15:49.755" level="INFO">Clicking element 'xpath://*[@id="timeline"]//div[@class='events']//li[last()-4]/a'.</msg>
+<status status="PASS" starttime="20240607 14:15:49.754" endtime="20240607 14:15:51.428"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240607 14:16:11.443" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20240607 14:15:51.429" endtime="20240607 14:16:11.443"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=image-of-current-layer-for-specific-time.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 14:16:12.039" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="image-of-current-layer-for-specific-time.png"&gt;&lt;img src="image-of-current-layer-for-specific-time.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 14:16:11.444" endtime="20240607 14:16:12.040"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20240607 14:16:12.560" level="INFO">${url} = http://localhost/?titles=Meteosat+0+degree+RGB+Composites&amp;layer=msg_fes%3Argb_dust</msg>
+<status status="PASS" starttime="20240607 14:16:12.041" endtime="20240607 14:16:12.560"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.open("${url}", "_blank");</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20240607 14:16:12.563" level="INFO">Executing JavaScript:
+window.open("http://localhost/?titles=Meteosat+0+degree+RGB+Composites&amp;layer=msg_fes%3Argb_dust", "_blank");
+Without any arguments.</msg>
+<status status="PASS" starttime="20240607 14:16:12.561" endtime="20240607 14:16:13.077"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=image-of-copied-layer-for-specific-time.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 14:16:13.669" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="image-of-copied-layer-for-specific-time.png"&gt;&lt;img src="image-of-copied-layer-for-specific-time.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 14:16:13.078" endtime="20240607 14:16:13.669"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240607 14:16:13.670" endtime="20240607 14:16:16.813"/>
+</kw>
+<doc>Verify if the selected time is present in the URL.
+The following steps are executed:
+- Open the NG Gallery page
+- Click on the drop down box
+- Click on the product type 'Meteosat 0 degree RGB Composites'
+- Click on the layers 'Dust RGB - MSG - 0 degree'
+- Click on the timeline time before 1 hour
+- Copy current url
+- Open new window and paste the url
+- Verify that the url open the same context as the current</doc>
+<status status="PASS" starttime="20240607 14:15:39.110" endtime="20240607 14:16:16.814"/>
+</test>
+<doc>The selected time shall be addressable in URL.</doc>
+<status status="PASS" starttime="20240607 14:15:38.592" endtime="20240607 14:16:16.816"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-GUI-TC-090">Test-GUI-TC-090</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,162 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: always  # Run pipeline for web events
+    - when: never # Prevent pipeline run for all other cases
+    
+variables:
+  TEST_TYPE: "UI"
+  TEST_ID:  "SB3-2"
+  NAME_AND_TAG: "userportal-tools:latest"
+
+before_script:
+  - "echo \"Printing configuration used\""
+  - "echo \"TEST_TYPE: $TEST_TYPE\""
+  - "echo \"TEST_ID: $TEST_ID\""
+
+stages:
+  - docker_build
+  - robot_test:UserportalScenario
+  # - jmeter_test:UserportalScenario
+  - test_overview
+
+build:
+  stage: docker_build
+  only:
+    changes:
+      - Dockerfile
+  image: docker:20.10.16  
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  services:
+    - docker:20.10.16-dind
+  before_script:
+    - docker info
+    - mkdir docker-images
+  script:
+    - echo ${HARBOR_REGISTRY_TOKEN} | docker login --username ${HARBOR_REGISTRY_USER} --password-stdin  ${HARBOR_REGISTRY}
+    - repoNameTag=${HARBOR_REGISTRY}/${HARBOR_PROJECT_NAME}/$NAME_AND_TAG
+    - docker build -t ${repoNameTag} .
+    - docker save ${repoNameTag} -o docker-images/$NAME_AND_TAG.tar
+    - |
+      for f in docker-images/*.tar; do
+        IMAGE=`docker load -i $f | awk '{print $3}'`
+        # Try 10 times as sometimes the push fails.
+        for n in {1..10}; do
+            echo Pushing ${IMAGE};
+            docker push ${IMAGE} && break;
+            echo "Push failed. Trying again..."
+        done
+      done
+  # only:
+  #   changes:
+  #       - Dockerfile
+
+Robot tests:
+  stage: robot_test:UserportalScenario
+  rules:
+    - if: '$TEST_TYPE == "UI" || $TEST_TYPE == "ALL"'
+  image: 
+    name: ${HARBOR_REGISTRY}/${HARBOR_PROJECT_NAME}/$NAME_AND_TAG
+    entrypoint: [""]
+  allow_failure: true
+  needs:
+    - job: build
+      optional: true
+  script:
+    - cd Robot-UserPortal 
+    - chmod  -R +x *
+    - cd Runners 
+    - |
+      if [ "$TEST_ID" == "ALL" ]; then
+        robot --outputdir ../Reports/USERPORTAL-TestCases --logtitle USERPORTAL-TestCases --reporttitle USERPORTAL-TestCases ../USERPORTAL-TestCases/TestSuites
+      else
+        robot --include $TEST_ID --outputdir ../Reports/USERPORTAL-TestCases --logtitle USERPORTAL-$TEST_ID-TestCases --reporttitle USERPORTAL-$TEST_ID-TestCases ../USERPORTAL-TestCases/TestSuites
+      fi
+  artifacts:
+    when: always
+    paths:
+        - $CI_PROJECT_DIR/Robot-UserPortal/Reports/USERPORTAL-TestCases/
+
+# JMeter tests:
+#   stage: jmeter_test:UserportalScenario
+#   rules:
+#     - if: '$TEST_TYPE == "PERF" || $TEST_TYPE == "ALL"'
+#   image: 
+#     name: ${HARBOR_REGISTRY}/${HARBOR_PROJECT_NAME}/$NAME_AND_TAG
+#     entrypoint: [""]
+#   allow_failure: true
+#   needs:
+#     - job: build
+#       optional: true
+#   script:
+#     - cd JMeter-UserPortal 
+#     - chmod -R +x *
+#     - cd Runners 
+#     - |
+#       if [[ "$TEST_ID" == "ALL" ]]; then
+#         ./run-USERPORTAL-319.sh
+#         ./run-USERPORTAL-320.sh
+#       else
+#         ./run-$TEST_ID.sh
+#       fi
+#   artifacts:
+#     when: always
+#     paths:
+#         - $CI_PROJECT_DIR/JMeter-UserPortal/Reports/
+
+Collect robot results:
+  stage: test_overview
+  rules:
+    - if: '$TEST_TYPE == "UI"'
+  needs:
+    - job: Robot tests
+      artifacts: true
+  allow_failure: true
+  image:
+        name: alpine/xml@sha256:eb20bd018431afa61407e0446a809a3f655c497fe53ec884454e6ac9c5ddd0e3
+        entrypoint: [""]
+  script:
+    - apk update
+    - apk add --no-cache bash
+    - cd test-robot-image-gallery
+    - mkdir -p Reports
+    - cd Runners 
+    - chmod 775 robot_suites_analysis.sh
+    - ./robot_suites_analysis.sh
+  artifacts:
+    when: always
+    paths:
+        - $CI_PROJECT_DIR/test-robot-image-gallery/Reports/Overall_test_analysis.txt
+        - $CI_PROJECT_DIR/test-robot-image-gallery/Reports/Overall_test_analysis.csv
+
+# Collect JMeter results:
+#   stage: test_overview
+#   rules:
+#     - if: '$TEST_TYPE == "PERF"'
+#   needs:
+#     - job: JMeter tests
+#       artifacts: true
+#   allow_failure: true
+#   image:
+#         name: ${HARBOR_REGISTRY}/${HARBOR_PROJECT_NAME}/$NAME_AND_TAG
+#         entrypoint: [""]
+#   script:
+#     - cd JMeter-UserPortal 
+#     - chmod -R +x *
+#     - cd Runners 
+#     - |
+#       if [ "$TEST_ID" == "ALL" ]; then
+#         ./jmeter-analysis.sh USERPORTAL-319
+#         ./jmeter-analysis.sh USERPORTAL-320 3000
+#       elif [ "$TEST_ID" == "USERPORTAL-320" ]; then
+#         ./jmeter-analysis.sh USERPORTAL-320 3000
+#       else
+#         ./jmeter-analysis.sh $TEST_ID
+#       fi
+#   artifacts:
+#     when: always
+#     paths:
+#         - $CI_PROJECT_DIR/JMeter-UserPortal/Reports/
+
+

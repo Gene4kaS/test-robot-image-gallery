@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240611 10:35:02.247" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-API-TC-060" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite\Test-API-TC-060.robot">
+<test id="s1-t1" name="Test-API-TC-060" line="11">
+<kw name="Open API" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the API page</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240611 10:35:03.065" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002CCAA6E1C18&gt;</msg>
+<status status="PASS" starttime="20240611 10:35:03.065" endtime="20240611 10:35:03.065"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:35:03.066" endtime="20240611 10:35:03.066"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:35:03.066" endtime="20240611 10:35:03.066"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:35:03.066" endtime="20240611 10:35:03.067"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:35:03.067" endtime="20240611 10:35:03.067"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:35:03.067" endtime="20240611 10:35:03.067"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240611 10:35:03.068" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite</msg>
+<status status="PASS" starttime="20240611 10:35:03.067" endtime="20240611 10:35:03.068"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240611 10:35:03.068" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240611 10:35:03.068" endtime="20240611 10:35:10.139"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240611 10:35:10.139" endtime="20240611 10:35:10.322"/>
+</kw>
+<status status="PASS" starttime="20240611 10:35:03.065" endtime="20240611 10:35:10.323"/>
+</kw>
+<status status="PASS" starttime="20240611 10:35:03.056" endtime="20240611 10:35:10.323"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_api_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240611 10:35:10.324" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<status status="PASS" starttime="20240611 10:35:10.323" endtime="20240611 10:35:12.079"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-api-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240611 10:35:12.352" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-api-page.png"&gt;&lt;img src="ng-api-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240611 10:35:12.079" endtime="20240611 10:35:12.352"/>
+</kw>
+<status status="PASS" starttime="20240611 10:35:03.055" endtime="20240611 10:35:12.352"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>${api_base_endpoint}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240611 10:35:12.353" level="INFO">Creating Session using : alias=API_testing, url=http://localhost:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240611 10:35:12.353" endtime="20240611 10:35:12.353"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>API_testing</arg>
+<arg>list-layers</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240611 10:35:12.464" level="INFO">GET Request : url=http://localhost:5000/list-layers 
+ path_url=/list-layers 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240611 10:35:12.465" level="INFO">GET Response : url=http://localhost:5000/list-layers 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Tue, 11 Jun 2024 09:35:12 GMT', 'Content-Type': 'application/json', 'Content-Length': '46517', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"configuration": {"MSGIODC Imagery": [{"name": "msg_iodc:ir039", "title": "High Rate SEVIRI IR3.9 \u03bcm Image - MSG - Indian Ocean", "alias": "layer alias", "description": "Rectified (level 1.5) Meteosat SEVIRI image data. The data is transmitted as High Rate transmissions in 12 spectral channels. Level 1.5 image data corresponds to the geolocated and radiometrically pre-processed image data, ready for further processing, e.g. the extraction of meteorological products. Any spacecraft specific effects have been removed, and in particular, linearisation and equalisation of the image radiometry has been performed for all SEVIRI channels. The on-board blackbody data has been processed. Both radiometric and geometric quality control information is included. To enhance the perception for areas which are on the night side of the Earth a different mapping with increased contrast is applied for IR3.9 product. The greyscale mapping is based on the EBBT which allows to map the ranges 200 K to 300 K for the night and 250 K to 330 K for the day.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:ir108", "title": "High Rate SEVIRI IR10.8 \u03bcm Image - MSG - Indian Ocean", "alias": "layer alias", "description": "Rectified (level 1.5) Meteosat SEVIRI image data. The data is transmitted as High Rate transmissions in 12 spectral channels. Level 1.5 image data corresponds to the geolocated and radiometrically pre-processed image data, ready for further processing, e.g. the extraction of meteorological products. Any spacecraft specific effects have been removed, and in particular, linearisation and equalisation of the image radiometry has been performed for all SEVIRI channels. The on-board blackbody data has been processed. Both radiometric and geometric quality control information is included.&amp;#13;&amp;#10;&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}], "MSGIODC RGB Composites": [{"name": "msg_iodc:rgb_airmass", "title": "Airmass RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Airmass product is an RGB (Red, Green, Blue) composite based upon data from infrared and water vapour channels from the SEVIRI instrument. It is designed and tuned to monitor the distribution of different air masses and evolution of cyclones, in particular rapid cyclogenesis, jet streaks and PV (potential vorticity) anomalies. Due to the incorporation of the water vapour and ozone channels, its usage at highest satellite viewing angles is limited. The Airmass RGB is composed from data from a combination of the SEVIRI WV6.2, WV7.3, IR9.7 and IR10.8 channels.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_ash", "title": "Volcanic Ash RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Ash product is an RGB (Red, Green, Blue) composite based upon infrared channel data from the Meteosat Second Generation satellite. It is designed to detect ash and sulphur dioxide (SO2) from volcanic eruptions which can be used for the provision of warnings to aviation authorities. The Ash RGB is composed from data from a combination of the SEVIRI IR8.7, IR10.8 and IR12.0 channels.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_convection", "title": "Convection RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Convection RGB combines the brightness temperature difference (BTD) between the WV6.2 and WV7.3 channels (on red), the BTD between the IR3.9 and IR10.8 channels (on green) and the reflectance difference between the NIR1.6 and the VIS0.6 channels (on blue). Severe convective storms appear bright yellow in this color scheme because of the near zero BTD WV6.2-WV7.3 of overshooting Cb clouds (high red). The strong updrafts in these clouds produce small ice particles at cloud tops due to homogeneous freezing of cloud drops, resulting with large BTD IR3.9-IR10.8 (high green). Finally, large negative values of NIR1.6-VIS0.6 because of the large absorption at NIR1.6 by ice particles keeps the blue very low. Please note that small ice crystals of Cirrus clouds should not be confused with vigorous convection. Inferred small ice crystals that are not associated with anvils of Cb clouds must form by elevated strong updrafts, such as in high altitude orographic wave clouds.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_dust", "title": "Dust RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Dust product is an RGB (Red, Green, Blue) composite based upon infrared channel data from the Meteosat Second Generation satellite. It is designed to monitor the evolution of dust storms during both day and night. But it is also useful for discrimination of cloud types (e.g. thin Cirrus detection) and detection of low level moisture. The Dust RGB is composed from data from a combination of the SEVIRI IR8.7, IR10.8 and IR12.0 channels.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_eview", "title": "European HRV RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The E-View product is an RGB (Red, Green, Blue) composite based upon data from the SEVIRI instrument. It is dedicated to detailed cloud monitoring of the European region. It is based on data from the SEVIRI High Resolution Visible channel combined with data from the IR10.8 channel that provides the temperature information (blue component).&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_fog", "title": "Fog / Low Clouds RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Fog / Low Clouds product is an RGB (Red, Green, Blue) composite based upon infrared channel data from the Meteosat Second Generation satellite. It is designed and tuned to monitor the evolution of night-time fog / low stratus. Other (secondary) applications are the detection of fires, low-level moisture boundaries and cloud classification in general. It should be noted that as the product is tuned for night-time conditions, its use during day-time is very limited. The Fog / Low Clouds RGB is composed from data from a combination of the SEVIRI IR3.9, IR10.8 and IR12.0 channels&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_microphysics", "title": "Day Microphysics RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Day Microphysics RGB (Red, Green, Blue) was inherited from Rosenfeld and Lensky (1998): the VIS0.8 reflectance in red approximates the cloud optical depth and amount of cloud water and ice; the IR3.9 solar reflectance in green is a qualitative measure for cloud particle size and phase, and the IR10.8 brightness temperature modulates the blue. This color scheme is useful for cloud analysis, convection, fog, snow, and fires. In this colour scheme water clouds that do not precipitate appear white because cloud drops are small, whereas large drops that are typical to precipitating clouds appear pink, because of the low reflectance at IR3.9 manifested as low green. Supercooled water clouds appear more yellow, because the lower temperature that modulate the blue component. Cold and thick clouds with tops composed of large ice particles, e.g., Cb tops, appear red. Optically thick clouds with small ice particles near their tops appear orange. &amp;#13;&amp;#... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20240611 10:35:12.477" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240611 10:35:12.354" endtime="20240611 10:35:12.477"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json_response}</var>
+<arg>${get_response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240611 10:35:12.480" level="INFO">${json_response} = {'configuration': {'MSGIODC Imagery': [{'name': 'msg_iodc:ir039', 'title': 'High Rate SEVIRI IR3.9 μm Image - MSG - Indian Ocean', 'alias': 'layer alias', 'description': 'Rectified (level 1.5) Meteosa...</msg>
+<status status="PASS" starttime="20240611 10:35:12.478" endtime="20240611 10:35:12.480"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${count}</var>
+<arg>${json_response['configuration']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:35:12.481" level="INFO">Length is 6</msg>
+<msg timestamp="20240611 10:35:12.481" level="INFO">${count} = 6</msg>
+<status status="PASS" starttime="20240611 10:35:12.480" endtime="20240611 10:35:12.481"/>
+</kw>
+<kw name="Should Be Larger Than" library="commonKeywords">
+<arg>${count}</arg>
+<arg>0</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${value_1} &lt;= ${value_2}</arg>
+<arg>Fail</arg>
+<arg>The value ${value_1} is not larger than ${value_2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240611 10:35:12.483" endtime="20240611 10:35:12.483"/>
+</kw>
+<status status="PASS" starttime="20240611 10:35:12.482" endtime="20240611 10:35:12.483"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${count}</var>
+<arg>${json_response['_links']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:35:12.484" level="INFO">Length is 43</msg>
+<msg timestamp="20240611 10:35:12.484" level="INFO">${count} = 43</msg>
+<status status="PASS" starttime="20240611 10:35:12.483" endtime="20240611 10:35:12.484"/>
+</kw>
+<kw name="Should Be Larger Than" library="commonKeywords">
+<arg>${count}</arg>
+<arg>0</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${value_1} &lt;= ${value_2}</arg>
+<arg>Fail</arg>
+<arg>The value ${value_1} is not larger than ${value_2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240611 10:35:12.485" endtime="20240611 10:35:12.485"/>
+</kw>
+<status status="PASS" starttime="20240611 10:35:12.485" endtime="20240611 10:35:12.485"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240611 10:35:12.486" endtime="20240611 10:35:15.850"/>
+</kw>
+<doc>Verify call endpoint and check that payload does contain layers data.
+The following steps are executed:
+- Open the API page
+- Call list-layers
+- Verify if content length is greater than 0</doc>
+<status status="PASS" starttime="20240611 10:35:03.052" endtime="20240611 10:35:15.852"/>
+</test>
+<doc>This test verifies that the API functions retrieve list of layers</doc>
+<status status="PASS" starttime="20240611 10:35:02.255" endtime="20240611 10:35:15.854"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-API-TC-060">Test-API-TC-060</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

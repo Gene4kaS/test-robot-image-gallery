@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240607 15:25:07.882" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-API-TC-020" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite\Test-API-TC-020.robot">
+<test id="s1-t1" name="Test-API-TC-020" line="11">
+<kw name="Open API" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the API page</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240607 15:25:08.597" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000023040B4FE48&gt;</msg>
+<status status="PASS" starttime="20240607 15:25:08.596" endtime="20240607 15:25:08.597"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:25:08.597" endtime="20240607 15:25:08.597"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:25:08.597" endtime="20240607 15:25:08.598"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:25:08.598" endtime="20240607 15:25:08.598"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:25:08.598" endtime="20240607 15:25:08.598"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:25:08.599" endtime="20240607 15:25:08.599"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240607 15:25:08.599" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite</msg>
+<status status="PASS" starttime="20240607 15:25:08.599" endtime="20240607 15:25:08.599"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240607 15:25:08.600" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240607 15:25:08.599" endtime="20240607 15:25:11.064"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240607 15:25:11.064" endtime="20240607 15:25:11.094"/>
+</kw>
+<status status="PASS" starttime="20240607 15:25:08.595" endtime="20240607 15:25:11.094"/>
+</kw>
+<status status="PASS" starttime="20240607 15:25:08.588" endtime="20240607 15:25:11.094"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_api_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240607 15:25:11.095" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<status status="PASS" starttime="20240607 15:25:11.094" endtime="20240607 15:25:12.204"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-api-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 15:25:12.792" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-api-page.png"&gt;&lt;img src="ng-api-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 15:25:12.205" endtime="20240607 15:25:12.793"/>
+</kw>
+<status status="PASS" starttime="20240607 15:25:08.587" endtime="20240607 15:25:12.793"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>${api_base_endpoint}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240607 15:25:12.794" level="INFO">Creating Session using : alias=API_testing, url=http://localhost:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240607 15:25:12.793" endtime="20240607 15:25:12.794"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>retrieve-image</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>retrieve-image</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:25:13.557" level="INFO">GET Request : url=http://localhost:5000/retrieve-image 
+ path_url=/retrieve-image 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:25:13.557" level="INFO">GET Response : url=http://localhost:5000/retrieve-image 
+ status=400, reason=BAD REQUEST 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:25:13 GMT', 'Content-Type': 'application/json', 'Content-Length': '25', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body="Cannot get latest time"
+ 
+ </msg>
+<msg timestamp="20240607 15:25:13.557" level="FAIL">HTTPError: 400 Client Error: BAD REQUEST for url: http://localhost:5000/retrieve-image</msg>
+<status status="FAIL" starttime="20240607 15:25:12.796" endtime="20240607 15:25:13.755"/>
+</kw>
+<msg timestamp="20240607 15:25:13.755" level="INFO">${get_response} = False</msg>
+<status status="PASS" starttime="20240607 15:25:12.795" endtime="20240607 15:25:13.756"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'False'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:25:13.761" endtime="20240607 15:25:13.762"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240607 15:25:13.765" endtime="20240607 15:25:17.318"/>
+</kw>
+<doc>Test that retrieve-image fails when a layer is not specified.
+The following steps are executed:
+- Open the API page
+- Call retrieve-image endpoint without required parameters
+- Verify if response code is 400</doc>
+<status status="PASS" starttime="20240607 15:25:08.584" endtime="20240607 15:25:17.319"/>
+</test>
+<doc>This test verifies that if not include the parameters of the API functions retrieve a 400 response</doc>
+<status status="PASS" starttime="20240607 15:25:07.888" endtime="20240607 15:25:17.322"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-API-TC-020">Test-API-TC-020</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

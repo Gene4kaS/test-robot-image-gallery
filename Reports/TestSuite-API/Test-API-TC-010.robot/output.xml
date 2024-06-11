@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240607 15:15:21.037" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-API-TC-010" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite\Test-API-TC-010.robot">
+<test id="s1-t1" name="Test-API-TC-010" line="11">
+<kw name="Open API" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the API page</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240607 15:15:21.943" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000025A22A08240&gt;</msg>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:21.943"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:21.943"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:21.943"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:21.953"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:15:21.953" endtime="20240607 15:15:21.953"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 15:15:21.953" endtime="20240607 15:15:21.953"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240607 15:15:21.953" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite</msg>
+<status status="PASS" starttime="20240607 15:15:21.953" endtime="20240607 15:15:21.953"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240607 15:15:21.953" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240607 15:15:21.953" endtime="20240607 15:15:24.434"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240607 15:15:24.434" endtime="20240607 15:15:24.464"/>
+</kw>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:24.464"/>
+</kw>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:24.464"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_api_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240607 15:15:24.465" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<status status="PASS" starttime="20240607 15:15:24.465" endtime="20240607 15:15:25.328"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-api-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 15:15:25.469" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-api-page.png"&gt;&lt;img src="ng-api-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 15:15:25.329" endtime="20240607 15:15:25.469"/>
+</kw>
+<status status="PASS" starttime="20240607 15:15:21.943" endtime="20240607 15:15:25.469"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>${api_base_endpoint}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240607 15:15:25.471" level="INFO">Creating Session using : alias=API_testing, url=http://localhost:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240607 15:15:25.470" endtime="20240607 15:15:25.471"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>/</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>/</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:25.486" level="INFO">GET Request : url=http://localhost:5000/ 
+ path_url=/ 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:25.486" level="INFO">GET Response : url=http://localhost:5000/ 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:25 GMT', 'Content-Type': 'text/html; charset=utf-8', 'Content-Length': '3805', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body=&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;API&lt;/title&gt;
+    
+&lt;link media="screen" rel="stylesheet" type="text/css" href="/swaggerui/droid-sans.css" /&gt;
+&lt;link media="screen" rel="stylesheet" type="text/css" href="/swaggerui/swagger-ui.css" /&gt;
+&lt;style&gt;
+html
+{
+  box-sizing: border-box;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+*,
+*:before,
+*:after
+{
+  box-sizing: inherit;
+}
+
+body {
+  margin:0;
+  background: #fafafa;
+}
+&lt;/style&gt;
+
+    &lt;link rel="icon" type="image/png" href="/swaggerui/favicon-32x32.png" sizes="32x32" /&gt;
+    &lt;link rel="icon" type="image/png" href="/swaggerui/favicon-16x16.png" sizes="16x16" /&gt;
+
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position:absolute;width:0;height:0"&gt;
+      &lt;defs&gt;
+        &lt;symbol viewBox="0 0 20 20" id="unlocked"&gt;
+              &lt;path d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V6h2v-.801C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8z"&gt;&lt;/path&gt;
+        &lt;/symbol&gt;
+
+        &lt;symbol viewBox="0 0 20 20" id="locked"&gt;
+          &lt;path d="M15.8 8H14V5.6C14 2.703 12.665 1 10 1 7.334 1 6 2.703 6 5.6V8H4c-.553 0-1 .646-1 1.199V17c0 .549.428 1.139.951 1.307l1.197.387C5.672 18.861 6.55 19 7.1 19h5.8c.549 0 1.428-.139 1.951-.307l1.196-.387c.524-.167.953-.757.953-1.306V9.199C17 8.646 16.352 8 15.8 8zM12 8H8V5.199C8 3.754 8.797 3 10 3c1.203 0 2 .754 2 2.199V8z"/&gt;
+        &lt;/symbol&gt;
+
+        &lt;symbol viewBox="0 0 20 20" id="close"&gt;
+          &lt;path d="M14.348 14.849c-.469.469-1.229.469-1.697 0L10 11.819l-2.651 3.029c-.469.469-1.229.469-1.697 0-.469-.469-.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-.469-.469-.469-1.228 0-1.697.469-.469 1.228-.469 1.697 0L10 8.183l2.651-3.031c.469-.469 1.228-.469 1.697 0 .469.469.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c.469.469.469 1.229 0 1.698z"/&gt;
+        &lt;/symbol&gt;
+
+        &lt;symbol viewBox="0 0 20 20" id="large-arrow"&gt;
+          &lt;path d="M13.25 10L6.109 2.58c-.268-.27-.268-.707 0-.979.268-.27.701-.27.969 0l7.83 7.908c.268.271.268.709 0 .979l-7.83 7.908c-.268.271-.701.27-.969 0-.268-.269-.268-.707 0-.979L13.25 10z"/&gt;
+        &lt;/symbol&gt;
+
+        &lt;symbol viewBox="0 0 20 20" id="large-arrow-down"&gt;
+          &lt;path d="M17.418 6.109c.272-.268.709-.268.979 0s.271.701 0 .969l-7.908 7.83c-.27.268-.707.268-.979 0l-7.908-7.83c-.27-.268-.27-.701 0-.969.271-.268.709-.268.979 0L10 13.25l7.418-7.141z"/&gt;
+        &lt;/symbol&gt;
+
+
+        &lt;symbol viewBox="0 0 24 24" id="jump-to"&gt;
+          &lt;path d="M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"/&gt;
+        &lt;/symbol&gt;
+
+        &lt;symbol viewBox="0 0 24 24" id="expand"&gt;
+          &lt;path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/&gt;
+        &lt;/symbol&gt;
+
+      &lt;/defs&gt;
+    &lt;/svg&gt;
+
+    &lt;div id="swagger-ui"&gt;&lt;/div&gt;
+
+    
+&lt;script src="/swaggerui/swagger-ui-bundle.js"&gt;&lt;/script&gt;
+&lt;script src="/swaggerui/swagger-ui-standalone-preset.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        window.onload = function() {
+            const ui = window.ui = new SwaggerUIBundle({
+                url: "/swagger.json",
+                
+                validatorUrl: "" || null,
+                dom_id: "#swagger-ui",
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset.slice(1) // No Topbar
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                
+                displayOperationId: false,
+                displayRequestDuration: false,
+                docExpansion: "none"
+            })
+
+            
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt; 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:25.472" endtime="20240607 15:15:25.488"/>
+</kw>
+<msg timestamp="20240607 15:15:25.488" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:25.472" endtime="20240607 15:15:25.488"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:25.489" endtime="20240607 15:15:25.489"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>list-layers</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>list-layers</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:25.501" level="INFO">GET Request : url=http://localhost:5000/list-layers 
+ path_url=/list-layers 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:25.502" level="INFO">GET Response : url=http://localhost:5000/list-layers 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:25 GMT', 'Content-Type': 'application/json', 'Content-Length': '46517', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"configuration": {"MSGIODC Imagery": [{"name": "msg_iodc:ir039", "title": "High Rate SEVIRI IR3.9 \u03bcm Image - MSG - Indian Ocean", "alias": "layer alias", "description": "Rectified (level 1.5) Meteosat SEVIRI image data. The data is transmitted as High Rate transmissions in 12 spectral channels. Level 1.5 image data corresponds to the geolocated and radiometrically pre-processed image data, ready for further processing, e.g. the extraction of meteorological products. Any spacecraft specific effects have been removed, and in particular, linearisation and equalisation of the image radiometry has been performed for all SEVIRI channels. The on-board blackbody data has been processed. Both radiometric and geometric quality control information is included. To enhance the perception for areas which are on the night side of the Earth a different mapping with increased contrast is applied for IR3.9 product. The greyscale mapping is based on the EBBT which allows to map the ranges 200 K to 300 K for the night and 250 K to 330 K for the day.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:ir108", "title": "High Rate SEVIRI IR10.8 \u03bcm Image - MSG - Indian Ocean", "alias": "layer alias", "description": "Rectified (level 1.5) Meteosat SEVIRI image data. The data is transmitted as High Rate transmissions in 12 spectral channels. Level 1.5 image data corresponds to the geolocated and radiometrically pre-processed image data, ready for further processing, e.g. the extraction of meteorological products. Any spacecraft specific effects have been removed, and in particular, linearisation and equalisation of the image radiometry has been performed for all SEVIRI channels. The on-board blackbody data has been processed. Both radiometric and geometric quality control information is included.&amp;#13;&amp;#10;&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}], "MSGIODC RGB Composites": [{"name": "msg_iodc:rgb_airmass", "title": "Airmass RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Airmass product is an RGB (Red, Green, Blue) composite based upon data from infrared and water vapour channels from the SEVIRI instrument. It is designed and tuned to monitor the distribution of different air masses and evolution of cyclones, in particular rapid cyclogenesis, jet streaks and PV (potential vorticity) anomalies. Due to the incorporation of the water vapour and ozone channels, its usage at highest satellite viewing angles is limited. The Airmass RGB is composed from data from a combination of the SEVIRI WV6.2, WV7.3, IR9.7 and IR10.8 channels.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_ash", "title": "Volcanic Ash RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Ash product is an RGB (Red, Green, Blue) composite based upon infrared channel data from the Meteosat Second Generation satellite. It is designed to detect ash and sulphur dioxide (SO2) from volcanic eruptions which can be used for the provision of warnings to aviation authorities. The Ash RGB is composed from data from a combination of the SEVIRI IR8.7, IR10.8 and IR12.0 channels.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_convection", "title": "Convection RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Convection RGB combines the brightness temperature difference (BTD) between the WV6.2 and WV7.3 channels (on red), the BTD between the IR3.9 and IR10.8 channels (on green) and the reflectance difference between the NIR1.6 and the VIS0.6 channels (on blue). Severe convective storms appear bright yellow in this color scheme because of the near zero BTD WV6.2-WV7.3 of overshooting Cb clouds (high red). The strong updrafts in these clouds produce small ice particles at cloud tops due to homogeneous freezing of cloud drops, resulting with large BTD IR3.9-IR10.8 (high green). Finally, large negative values of NIR1.6-VIS0.6 because of the large absorption at NIR1.6 by ice particles keeps the blue very low. Please note that small ice crystals of Cirrus clouds should not be confused with vigorous convection. Inferred small ice crystals that are not associated with anvils of Cb clouds must form by elevated strong updrafts, such as in high altitude orographic wave clouds.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_dust", "title": "Dust RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Dust product is an RGB (Red, Green, Blue) composite based upon infrared channel data from the Meteosat Second Generation satellite. It is designed to monitor the evolution of dust storms during both day and night. But it is also useful for discrimination of cloud types (e.g. thin Cirrus detection) and detection of low level moisture. The Dust RGB is composed from data from a combination of the SEVIRI IR8.7, IR10.8 and IR12.0 channels.&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_eview", "title": "European HRV RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The E-View product is an RGB (Red, Green, Blue) composite based upon data from the SEVIRI instrument. It is dedicated to detailed cloud monitoring of the European region. It is based on data from the SEVIRI High Resolution Visible channel combined with data from the IR10.8 channel that provides the temperature information (blue component).&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_fog", "title": "Fog / Low Clouds RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Fog / Low Clouds product is an RGB (Red, Green, Blue) composite based upon infrared channel data from the Meteosat Second Generation satellite. It is designed and tuned to monitor the evolution of night-time fog / low stratus. Other (secondary) applications are the detection of fires, low-level moisture boundaries and cloud classification in general. It should be noted that as the product is tuned for night-time conditions, its use during day-time is very limited. The Fog / Low Clouds RGB is composed from data from a combination of the SEVIRI IR3.9, IR10.8 and IR12.0 channels&amp;#13;&amp;#10;&amp;#13;&amp;#10;From 1 June 2022, Meteosat-9 at 45.5\u00b0 E is the prime satellite for the IODC service, replacing Meteosat-8 (located at 41.5\u00b0 E while in operation).", "features": "backgrounds:ne_boundary_lines_land", "icon": "https://img.icons8.com/ios/50/FFFFFF/globe--v1.png", "projection": "AUTO:42003,9001,45.5,0", "bbox": [-10000000, -10000000, 10000000, 10000000]}, {"name": "msg_iodc:rgb_microphysics", "title": "Day Microphysics RGB - MSG - Indian Ocean", "alias": "layer alias", "description": "The Day Microphysics RGB (Red, Green, Blue) was inherited from Rosenfeld and Lensky (1998): the VIS0.8 reflectance in red approximates the cloud optical depth and amount of cloud water and ice; the IR3.9 solar reflectance in green is a qualitative measure for cloud particle size and phase, and the IR10.8 brightness temperature modulates the blue. This color scheme is useful for cloud analysis, convection, fog, snow, and fires. In this colour scheme water clouds that do not precipitate appear white because cloud drops are small, whereas large drops that are typical to precipitating clouds appear pink, because of the low reflectance at IR3.9 manifested as low green. Supercooled water clouds appear more yellow, because the lower temperature that modulate the blue component. Cold and thick clouds with tops composed of large ice particles, e.g., Cb tops, appear red. Optically thick clouds with small ice particles near their tops appear orange. &amp;#13;&amp;#... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:25.490" endtime="20240607 15:15:25.502"/>
+</kw>
+<msg timestamp="20240607 15:15:25.502" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:25.490" endtime="20240607 15:15:25.502"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:25.503" endtime="20240607 15:15:25.503"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>list-regions</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>list-regions</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:25.514" level="INFO">GET Request : url=http://localhost:5000/list-regions 
+ path_url=/list-regions 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:25.514" level="INFO">GET Response : url=http://localhost:5000/list-regions 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:25 GMT', 'Content-Type': 'application/json', 'Content-Length': '726', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"regions": {"earth": ["-77.0", "-77.0", "77.0", "77.0"], "northamerica": ["-166", "7", "-52", "77"], "southamerica": ["-87", "-58", "-33", "13"], "europe": ["-11", "34", "32", "64"], "africa": ["-18", "-36", "53", "38"]}, "_links": {"add region=earth as image parameter": "http://172.17.0.2:5000/add-parameter?region=earth", "add region=northamerica as image parameter": "http://172.17.0.2:5000/add-parameter?region=northamerica", "add region=southamerica as image parameter": "http://172.17.0.2:5000/add-parameter?region=southamerica", "add region=europe as image parameter": "http://172.17.0.2:5000/add-parameter?region=europe", "add region=africa as image parameter": "http://172.17.0.2:5000/add-parameter?region=africa"}} 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:25.504" endtime="20240607 15:15:25.515"/>
+</kw>
+<msg timestamp="20240607 15:15:25.515" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:25.504" endtime="20240607 15:15:25.515"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:25.516" endtime="20240607 15:15:25.517"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>list-supported-formats</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>list-supported-formats</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:25.531" level="INFO">GET Request : url=http://localhost:5000/list-supported-formats 
+ path_url=/list-supported-formats 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:25.531" level="INFO">GET Response : url=http://localhost:5000/list-supported-formats 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:25 GMT', 'Content-Type': 'application/json', 'Content-Length': '316', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"formats": ["tiff", "png", "jpeg"], "_links": {"add format=tiff as image parameter": "http://172.17.0.2:5000/add-parameter?format=tiff", "add format=png as image parameter": "http://172.17.0.2:5000/add-parameter?format=png", "add format=jpeg as image parameter": "http://172.17.0.2:5000/add-parameter?format=jpeg"}} 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:25.518" endtime="20240607 15:15:25.531"/>
+</kw>
+<msg timestamp="20240607 15:15:25.531" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:25.517" endtime="20240607 15:15:25.531"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:25.532" endtime="20240607 15:15:25.532"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>add-parameter</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>add-parameter</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:25.549" level="INFO">GET Request : url=http://localhost:5000/add-parameter 
+ path_url=/add-parameter 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:25.549" level="INFO">GET Response : url=http://localhost:5000/add-parameter 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:25 GMT', 'Content-Type': 'application/json', 'Content-Length': '1060', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"_links": {"list-layers": "http://172.17.0.2/list-layers", "list-supported-formats": "http://172.17.0.2/list-supported-formats", "list-regions": "http://172.17.0.2/list-regions", "set image width to 300": "http://172.17.0.2/add-parameter?width=300", "set image width to 600": "http://172.17.0.2/add-parameter?width=600", "set image width to 1000": "http://172.17.0.2/add-parameter?width=1000", "set image width to 1500": "http://172.17.0.2/add-parameter?width=1500", "set image width to 2200": "http://172.17.0.2/add-parameter?width=2200", "set image width to 3500": "http://172.17.0.2/add-parameter?width=3500", "set image height to 300": "http://172.17.0.2/add-parameter?height=300", "set image height to 600": "http://172.17.0.2/add-parameter?height=600", "set image height to 1000": "http://172.17.0.2/add-parameter?height=1000", "set image height to 1500": "http://172.17.0.2/add-parameter?height=1500", "set image height to 2200": "http://172.17.0.2/add-parameter?height=2200", "set image height to 3500": "http://172.17.0.2/add-parameter?height=3500"}} 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:25.533" endtime="20240607 15:15:25.549"/>
+</kw>
+<msg timestamp="20240607 15:15:25.550" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:25.533" endtime="20240607 15:15:25.550"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:25.550" endtime="20240607 15:15:25.551"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>layer=msg_iodc:rgb_natural</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240607 15:15:25.553" level="INFO">${params} = {'layer': 'msg_iodc:rgb_natural'}</msg>
+<status status="PASS" starttime="20240607 15:15:25.552" endtime="20240607 15:15:25.553"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>list-available-times</arg>
+<arg>params=${params}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>list-available-times</arg>
+<arg>params=${params}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:26.380" level="INFO">GET Request : url=http://localhost:5000/list-available-times?layer=msg_iodc%3Argb_natural 
+ path_url=/list-available-times?layer=msg_iodc%3Argb_natural 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:26.380" level="INFO">GET Response : url=http://localhost:5000/list-available-times?layer=msg_iodc%3Argb_natural 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:26 GMT', 'Content-Type': 'application/json', 'Content-Length': '52332', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"times": ["2024-06-07T13:45:00.000Z", "2024-06-07T13:30:00.000Z", "2024-06-07T13:15:00.000Z", "2024-06-07T13:00:00.000Z", "2024-06-07T12:45:00.000Z", "2024-06-07T12:30:00.000Z", "2024-06-07T12:15:00.000Z", "2024-06-07T12:00:00.000Z", "2024-06-07T11:45:00.000Z", "2024-06-07T11:30:00.000Z", "2024-06-07T11:15:00.000Z", "2024-06-07T11:00:00.000Z", "2024-06-07T10:45:00.000Z", "2024-06-07T10:30:00.000Z", "2024-06-07T10:15:00.000Z", "2024-06-07T10:00:00.000Z", "2024-06-07T09:45:00.000Z", "2024-06-07T09:30:00.000Z", "2024-06-07T09:15:00.000Z", "2024-06-07T09:00:00.000Z", "2024-06-07T08:45:00.000Z", "2024-06-07T08:30:00.000Z", "2024-06-07T08:15:00.000Z", "2024-06-07T08:00:00.000Z", "2024-06-07T07:45:00.000Z", "2024-06-07T07:30:00.000Z", "2024-06-07T07:15:00.000Z", "2024-06-07T07:00:00.000Z", "2024-06-07T06:45:00.000Z", "2024-06-07T06:30:00.000Z", "2024-06-07T06:15:00.000Z", "2024-06-07T06:00:00.000Z", "2024-06-07T05:45:00.000Z", "2024-06-07T05:30:00.000Z", "2024-06-07T05:15:00.000Z", "2024-06-07T05:00:00.000Z", "2024-06-07T04:45:00.000Z", "2024-06-07T04:30:00.000Z", "2024-06-07T04:15:00.000Z", "2024-06-07T04:00:00.000Z", "2024-06-07T03:45:00.000Z", "2024-06-07T03:30:00.000Z", "2024-06-07T03:15:00.000Z", "2024-06-07T03:00:00.000Z", "2024-06-07T02:45:00.000Z", "2024-06-07T02:30:00.000Z", "2024-06-07T02:15:00.000Z", "2024-06-07T02:00:00.000Z", "2024-06-07T01:45:00.000Z", "2024-06-07T01:30:00.000Z", "2024-06-07T01:15:00.000Z", "2024-06-07T01:00:00.000Z", "2024-06-07T00:45:00.000Z", "2024-06-07T00:30:00.000Z", "2024-06-07T00:15:00.000Z", "2024-06-07T00:00:00.000Z", "2024-06-06T23:45:00.000Z", "2024-06-06T23:30:00.000Z", "2024-06-06T23:15:00.000Z", "2024-06-06T23:00:00.000Z", "2024-06-06T22:45:00.000Z", "2024-06-06T22:30:00.000Z", "2024-06-06T22:15:00.000Z", "2024-06-06T22:00:00.000Z", "2024-06-06T21:45:00.000Z", "2024-06-06T21:30:00.000Z", "2024-06-06T21:15:00.000Z", "2024-06-06T21:00:00.000Z", "2024-06-06T20:45:00.000Z", "2024-06-06T20:30:00.000Z", "2024-06-06T20:15:00.000Z", "2024-06-06T20:00:00.000Z", "2024-06-06T19:45:00.000Z", "2024-06-06T19:30:00.000Z", "2024-06-06T19:15:00.000Z", "2024-06-06T19:00:00.000Z", "2024-06-06T18:45:00.000Z", "2024-06-06T18:30:00.000Z", "2024-06-06T18:15:00.000Z", "2024-06-06T18:00:00.000Z", "2024-06-06T17:45:00.000Z", "2024-06-06T17:30:00.000Z", "2024-06-06T17:15:00.000Z", "2024-06-06T17:00:00.000Z", "2024-06-06T16:45:00.000Z", "2024-06-06T16:30:00.000Z", "2024-06-06T16:15:00.000Z", "2024-06-06T16:00:00.000Z", "2024-06-06T15:45:00.000Z", "2024-06-06T15:30:00.000Z", "2024-06-06T15:15:00.000Z", "2024-06-06T15:00:00.000Z", "2024-06-06T14:45:00.000Z", "2024-06-06T14:30:00.000Z", "2024-06-06T14:15:00.000Z", "2024-06-06T14:00:00.000Z", "2024-06-06T13:45:00.000Z", "2024-06-06T13:30:00.000Z", "2024-06-06T13:15:00.000Z", "2024-06-06T13:00:00.000Z", "2024-06-06T12:45:00.000Z", "2024-06-06T12:30:00.000Z", "2024-06-06T12:15:00.000Z", "2024-06-06T12:00:00.000Z", "2024-06-06T11:45:00.000Z", "2024-06-06T11:30:00.000Z", "2024-06-06T11:15:00.000Z", "2024-06-06T11:00:00.000Z", "2024-06-06T10:45:00.000Z", "2024-06-06T10:30:00.000Z", "2024-06-06T10:15:00.000Z", "2024-06-06T10:00:00.000Z", "2024-06-06T09:45:00.000Z", "2024-06-06T09:30:00.000Z", "2024-06-06T09:15:00.000Z", "2024-06-06T09:00:00.000Z", "2024-06-06T08:45:00.000Z", "2024-06-06T08:30:00.000Z", "2024-06-06T08:15:00.000Z", "2024-06-06T08:00:00.000Z", "2024-06-06T07:45:00.000Z", "2024-06-06T07:30:00.000Z", "2024-06-06T07:15:00.000Z", "2024-06-06T07:00:00.000Z", "2024-06-06T06:45:00.000Z", "2024-06-06T06:30:00.000Z", "2024-06-06T06:15:00.000Z", "2024-06-06T06:00:00.000Z", "2024-06-06T05:45:00.000Z", "2024-06-06T05:30:00.000Z", "2024-06-06T05:15:00.000Z", "2024-06-06T05:00:00.000Z", "2024-06-06T04:45:00.000Z", "2024-06-06T04:30:00.000Z", "2024-06-06T04:15:00.000Z", "2024-06-06T04:00:00.000Z", "2024-06-06T03:45:00.000Z", "2024-06-06T03:30:00.000Z", "2024-06-06T03:15:00.000Z", "2024-06-06T03:00:00.000Z", "2024-06-06T02:45:00.000Z", "2024-06-06T02:30:00.000Z", "2024-06-06T02:15:00.000Z", "2024-06-06T02:00:00.000Z", "2024-06-06T01:45:00.000Z", "2024-06-06T01:30:00.000Z", "2024-06-06T01:15:00.000Z", "2024-06-06T01:00:00.000Z", "2024-06-06T00:45:00.000Z", "2024-06-06T00:30:00.000Z", "2024-06-06T00:15:00.000Z", "2024-06-06T00:00:00.000Z", "2024-06-05T23:45:00.000Z", "2024-06-05T23:30:00.000Z", "2024-06-05T23:15:00.000Z", "2024-06-05T23:00:00.000Z", "2024-06-05T22:45:00.000Z", "2024-06-05T22:30:00.000Z", "2024-06-05T22:15:00.000Z", "2024-06-05T22:00:00.000Z", "2024-06-05T21:45:00.000Z", "2024-06-05T21:30:00.000Z", "2024-06-05T21:15:00.000Z", "2024-06-05T21:00:00.000Z", "2024-06-05T20:45:00.000Z", "2024-06-05T20:30:00.000Z", "2024-06-05T20:15:00.000Z", "2024-06-05T20:00:00.000Z", "2024-06-05T19:45:00.000Z", "2024-06-05T19:30:00.000Z", "2024-06-05T19:15:00.000Z", "2024-06-05T19:00:00.000Z", "2024-06-05T18:45:00.000Z", "2024-06-05T18:30:00.000Z", "2024-06-05T18:15:00.000Z", "2024-06-05T18:00:00.000Z", "2024-06-05T17:45:00.000Z", "2024-06-05T17:30:00.000Z", "2024-06-05T17:15:00.000Z", "2024-06-05T17:00:00.000Z", "2024-06-05T16:45:00.000Z", "2024-06-05T16:30:00.000Z", "2024-06-05T16:15:00.000Z", "2024-06-05T16:00:00.000Z", "2024-06-05T15:45:00.000Z", "2024-06-05T15:30:00.000Z", "2024-06-05T15:15:00.000Z", "2024-06-05T15:00:00.000Z", "2024-06-05T14:45:00.000Z", "2024-06-05T14:30:00.000Z", "2024-06-05T14:15:00.000Z", "2024-06-05T14:00:00.000Z", "2024-06-05T13:45:00.000Z", "2024-06-05T13:30:00.000Z", "2024-06-05T13:15:00.000Z", "2024-06-05T13:00:00.000Z", "2024-06-05T12:45:00.000Z", "2024-06-05T12:30:00.000Z", "2024-06-05T12:15:00.000Z", "2024-06-05T12:00:00.000Z", "2024-06-05T11:45:00.000Z", "2024-06-05T11:30:00.000Z", "2024-06-05T11:15:00.000Z", "2024-06-05T11:00:00.000Z", "2024-06-05T10:45:00.000Z", "2024-06-05T10:30:00.000Z", "2024-06-05T10:15:00.000Z", "2024-06-05T10:00:00.000Z", "2024-06-05T09:45:00.000Z", "2024-06-05T09:30:00.000Z", "2024-06-05T09:15:00.000Z", "2024-06-05T09:00:00.000Z", "2024-06-05T08:45:00.000Z", "2024-06-05T08:30:00.000Z", "2024-06-05T08:15:00.000Z", "2024-06-05T08:00:00.000Z", "2024-06-05T07:45:00.000Z", "2024-06-05T07:30:00.000Z", "2024-06-05T07:15:00.000Z", "2024-06-05T07:00:00.000Z", "2024-06-05T06:45:00.000Z", "2024-06-05T06:30:00.000Z", "2024-06-05T06:15:00.000Z", "2024-06-05T06:00:00.000Z", "2024-06-05T05:45:00.000Z", "2024-06-05T05:30:00.000Z", "2024-06-05T05:15:00.000Z", "2024-06-05T05:00:00.000Z", "2024-06-05T04:45:00.000Z", "2024-06-05T04:30:00.000Z", "2024-06-05T04:15:00.000Z", "2024-06-05T04:00:00.000Z", "2024-06-05T03:45:00.000Z", "2024-06-05T03:30:00.000Z", "2024-06-05T03:15:00.000Z", "2024-06-05T03:00:00.000Z", "2024-06-05T02:45:00.000Z", "2024-06-05T02:30:00.000Z", "2024-06-05T02:15:00.000Z", "2024-06-05T02:00:00.000Z", "2024-06-05T01:45:00.000Z", "2024-06-05T01:30:00.000Z", "2024-06-05T01:15:00.000Z", "2024-06-05T01:00:00.000Z", "2024-06-05T00:45:00.000Z", "2024-06-05T00:30:00.000Z", "2024-06-05T00:15:00.000Z", "2024-06-05T00:00:00.000Z", "2024-06-04T23:45:00.000Z", "2024-06-04T23:30:00.000Z", "2024-06-04T23:15:00.000Z", "2024-06-04T23:00:00.000Z", "2024-06-04T22:45:00.000Z", "2024-06-04T22:30:00.000Z", "2024-06-04T22:15:00.000Z", "2024-06-04T22:00:00.000Z", "2024-06-04T21:45:00.000Z", "2024-06-04T21:30:00.000Z", "2024-06-04T21:15:00.000Z", "2024-06-04T21:00:00.000Z", "2024-06-04T20:45:00.000Z", "2024-06-04T20:30:00.000Z", "2024-06-04T20:15:00.000Z", "2024-06-04T20:00:00.000Z", "2024-06-04T19:45:00.000Z", "2024-06-04T19:30:00.000Z", "2024-06-04T19:15:00.000Z", "2024-06-04T19:00:00.000Z", "2024-06-04T18:45:00.000Z", "2024-06-04T18:30:00.000Z", "2024-06-04T18:15:00.000Z", "2024-06-04T18:00:00.000Z", "2024-06-04T17:45:00.000Z", "2024-06-04T17:30:00.000Z", "2024-06-04T17:15:00.000Z", "2024-06-04T17:00:00.000Z", "2024-06-04T16:45:00.000Z", "2024-06-04T16:30:00.000Z", "2024-06-04T16:15:00.000Z", "2024-06-04T16:00:00.000Z", "2024-06-04T15:45:00.000Z", "2024-06-04T15:30:00.000Z", "2024-06-04T15:15:00.000Z", "2024-06-04T15:00:00.000Z", "2024-06-04T14:45:00.000Z", "2024-06-04T14:30:00.000Z", "2024-06-04T14:15:00.000Z", "2024-06-04T14:00:00.000Z", "2024-06-04T13:45:00.000Z"], "_links": {"add time=2024-06-07T13:45:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T13:45:00.000Z", "add time=2024-06-07T13:30:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T13:30:00.000Z", "add time=2024-06-07T13:15:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T13:15:00.000Z", "add time=2024-06-07T13:00:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T13:00:00.000Z", "add time=2024-06-07T12:45:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T12:45:00.000Z", "add time=2024-06-07T12:30:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T12:30:00.000Z", "add time=2024-06-07T12:15:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T12:15:00.000Z", "add time=2024-06-07T12:00:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T12:00:00.000Z", "add time=2024-06-07T11:45:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T11:45:00.000Z", "add time=2024-06-07T11:30:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T11:30:00.000Z", "add time=2024-06-07T11:15:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T11:15:00.000Z", "add time=2024-06-07T11:00:00.000Z as image parameter": "http://172.17.0.2:5000/add-parameter?layer=msg_iodc:rgb_natural&amp;time=2024-06-07T11:00:00.000Z", "add time=2024-06-07T10:45:00.000Z as image param... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:25.554" endtime="20240607 15:15:26.381"/>
+</kw>
+<msg timestamp="20240607 15:15:26.381" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:25.553" endtime="20240607 15:15:26.381"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:26.382" endtime="20240607 15:15:26.382"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${params}</var>
+<arg>layer=msg_iodc:rgb_natural</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240607 15:15:26.383" level="INFO">${params} = {'layer': 'msg_iodc:rgb_natural'}</msg>
+<status status="PASS" starttime="20240607 15:15:26.383" endtime="20240607 15:15:26.383"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${get_response}</var>
+<arg>get on session</arg>
+<arg>API_testing</arg>
+<arg>retrieve-image</arg>
+<arg>params=${params}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="GET On Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>retrieve-image</arg>
+<arg>params=${params}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240607 15:15:29.349" level="INFO">GET Request : url=http://localhost:5000/retrieve-image?layer=msg_iodc%3Argb_natural 
+ path_url=/retrieve-image?layer=msg_iodc%3Argb_natural 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240607 15:15:30.658" level="INFO">GET Response : url=http://localhost:5000/retrieve-image?layer=msg_iodc%3Argb_natural 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Fri, 07 Jun 2024 14:15:29 GMT, Fri, 07 Jun 2024 14:15:29 GMT', 'Content-Disposition': 'inline; filename=600-600--77--77-77-77-backgrounds_ne_background-msg_iodc_rgb_natural.jpeg', 'Content-Type': 'image/jpeg', 'Content-Length': '68986', 'Last-Modified': 'Fri, 07 Jun 2024 14:15:29 GMT', 'Cache-Control': 'no-cache', 'ETag': '"1717769729.327692-68986-1116809743"', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body=����JFIF��C		
+ $.' ",#(7),01444'9=82&lt;.342��C			2!!22222222222222222222222222222222222222222222222222��XX"��	
+���}!1AQa"q2���#B��R��$3br�	
+%&amp;'()*456789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz���������������������������������������������������������������������������	
+���w!1AQaq"2�B����	#3R�br�
+$4�%�&amp;'()*56789:CDEFGHIJSTUVWXYZcdefghijstuvwxyz��������������������������������������������������������������������������?�(�֟5���RT(ñ��q^���P�&lt;d~5&lt;W��ۼ�|t�H��sU�I�Oq�����$S�
+�Dq�NI��MĚ��B�9}k���*����g�a���Ϲ�5�P��q���R/���&lt;?�]�ʲ2��~��?e����tpx�hd��$�݊Xf�d�J�Q�d����Q*V�Y΂{C��z���=qNQ�I�VN��AuYW���&lt;���.#��
+�i�c�2RWA��u4��f��p�c��N��q��,LR��K�;Rd���I��FM&amp;M�)��.sL=i�7{
+M�ҏBu�H4��S&lt;���fJ��j���84�퐸���d�ŋ��9��ԙ�z��|g�{Uiu��7Χ����r���$(��H���d����Ա�r@����Z�Q���aPrs��B��2��&amp;�_,����W6��J	jA(���x�%w��'5O�V���n����WtU��I��u5�)�&lt;�~c�N� P:S�2��O�Ҕ/=qHP�������HI?�jv�F�:������Ӄ)�}iB�ލ��4m���z�PTu'�O/=�B�&lt;�Zq���P�cҁ� �B�.Xdb��jA�Se�t2O*F��v
+?3Ud���/��\6G��*��od]�"�[����2ym�s��a�g��bEN:��٪�O4uǘ%^�f�ui���Q�mӀqYz�|=vYw2�0&lt;��9�&gt;���5��)�,�qȨx������;���8��Fɍ�GM��O${�5/���̹%X�.H���Q�Y&lt;�5�{��~x�k�\�P��s��F�q������Y�j�D��ӣm[��CZ�5M�${j�k6��mο��_�D��\�������qk�f˻3�G֪�*:�U�H����A���)���6�C�-�֦��0�wB��@��u֍����u�x��K�5YJ���ְ�}�l����Y1x�%'�U�
+�.?CP\���#���V����2[ax��s��TkU{�:T���:��qne�����j8|ci'��O���Kh�#+̓c�?�z��M�
+.,��#�[ۦ)�z��!*4���:�_�wLU.a�p#�֒]��2��j�V���)M�@&lt;���:�?���T�ou
+��˵��Iן�~E�=?���DFG����
+3���!��[0WP����BS#׃�m�l]j��%���?�֏iZ�K�%Ң�%o��A3�&lt;R�R7��=I��V&amp;O�d�O����Z*�c&gt;���Qn��4���[3��NѠ]�	�����¯���]C�����V!�$���r����Q�0�ع�Ch��$^Ĕ����]:�k��[�^c���g�_kp?��,����J��Z����b}r�u)�ۢ�,u����y��n������c*R��)sIW�Q�!R����1�צ�`�m��d �Z�8�o}��&gt;�����M/��!w�˅�h�X�O�.�E��f��`wYF3�Tr��bͣK���c�c��Z�]�p����]H��W��1�kp���f��Rt��J�:��&amp;���I mL�?LU#^0&gt;�+��4dTW`������Fa��34c pW�kS�c&lt;"�,�q��b��b�E mv7}@�f��k�RW8�fR��zL��㊲���MϽ(y#��(��q4������k��)�C�������=���u���+J �@�_Q�X���W����\�i�k��e���c~�W7�lLC���3ZK'UN;�g0k�h�A_�r����bQ���J�y]��s�@3�M���I�J�=1Rh!��1�����cޘ���i?	��x�&amp;���L ��ƣy��OwqN�W&lt;w�q��"W+�7��k&gt;[�n�R��{FH?NE[w�L��G�g��I�-昖�� ����Zz̀�^6i��9O�����mn�t�4r(��;��t�B��bV{��a���`���&gt;��@z�+3�8ǚ�nD�՛%�,�E�Dl�ve�oL���*�ڼ�d	q���Q�L�]tc(��8k�2�Є���R����J�[�]ñ�+S$&amp;W�@�E&amp;����M�.8�4���{���`� 
+k���ɠ|�I�)0�&gt;��&lt;SI����v�&amp;�A�����
+��}�dO�c�D��G¡8������1*���˄%-���ך�y�Y���71��fr�t�Qɮ;QԦ��1�ً�h���u���Y��jѫCj��+�~�5��K�7X~�޻���q���O$����P����ֳ���`��#��Mf\�WV�4���'*��גMb;Jc�"e��z�֔���1�C��ƒ��L�rrZ˹�ܮ�,c��Y�#ͻ8'5
+�ȥ����|�5��I$���5����=�d�L$�$�3�ǁ�ӺDٲ.$��d�ʲ��k��|}�� [�dx���[$}2j���b����(#����5v��z=�&amp;�~���������Vn�rs+3�t�隬jַq�`�F���զ�.�^s�õy��m����(}��$��x�����0.�03�Ҳ�����&gt;_t�DE�)�"���Va�� q�Y�����ʹu8?2��O��T)%X�`�A5��G
+ua&gt;Va�BdcO����$e��`ޣ�&gt;���=��+���q:�����������p�����7=Q�5��M-���0�.���A�y��Г�;���s�H����?�r��&amp;�^m��q�G�����t^���'fy
+�GA��U�.��l$O5� ,GL�u��Ie�@�,��@��Ւ�r�5^�V���i/�G`##���74Q�C�ϋ�&gt;����ڈ�GO�&gt;�����\����Y$#�?�O�s�ƴ��b��m��rA�׊μ�����d�o&amp;`P~��T�_A(��/Ԣ�u�����d'����k��_�yC�������V��3���?,U_�Z��~u�-�c.��S�&lt;�ǐ�n]Y�e-��̏�]� mu`���I�z6�sj � �e2���4�е�ܐ|�����ӯmf�W���Һ�x��+J�eSSڎ�"mc�A���&gt;�r�S�������1ˬ�VK�c��Ϸ5���P��nu�҄���*�Ҋ�~��o!��=��i=�8��
+��7��GƗ4A�&gt;����u1�I#��z���&gt;��^�v��ב��r���=i����Uk�d�X&lt;��A�kAUT{���Y�.;�4�B�n,v=E.0��OH�Pj��A#A:��u�*}��͸nY��u�\���da��E﹚�ӼY�ms1���9"���Ň�p;f�\�_��\i4x��U+.s��V-NXP��i��O9&lt;c?�#hת�ؤ����X��:I� 9"�	:q�w�3��9%k v��dh�'#�a�)�udԽ��(�m��z	ib��p��U\��#��T�����ʳ������j��-��d9�TA?�dC�\E��Å���]T��os�t��4A&amp;�2(7����Uy!�#�'�V�Ƴ�_(�&lt;�pA�{�Ź���R�ͷ9�8��S�-��Z��&amp;�F'�hOZ��=kip@B�$��6qFFqY#��\���
+Uv�;��翭eYI��5�ʧ�!�2�����V�&lt;CpS���o3�A��!��Jc��q��Vݳ��&lt;��=�ɯ6��OR)-�4E��
+kO����
+����SE�����#7`A�%v�
+�5�sx�i���m8?�i\�+^l}ᏭG$��Fx��.5��VAi|��}28���B�#��˶O���U)v1uຝ��F�&amp;ENæJý�|�ʑ��D�?�zϒ�i@�fv���C[B�����V�w�N����[���^�g�d5�&gt;�(y�Z�G����QI'�Kz{�\�t��
+���r�?�]�["o�ь|��2|���ӳ!�"6�Č��qI�����&lt;�z�Z��`����I��S� ך__ֺY4Hk(�P�&gt;�i4�$G�[���y��=*^.X9�� ����l�:\Q,��(@�##�b�ڝER7��R���!zoL�zp:{S�늂Yʩ�9��NrQWd��M"�;*���-����T���~��桞�L�'X��� r3���&gt;�Q7���q�\1R���劉�u��{�ڃKz\Σ7˸{c�OҴk�NfvIR�OP�}8���-���4�&lt;��Y�]V�5�����#��;��s��w7���hC���ƛ�cR��9�6������*���w�w?�Pէ���6�[~C�p*l�ʪUs�ІKq���A�\Tp�r��$eVb�{��V 0����$����҅��1��w׃V�2�J������z-�si��6�?:��t�D��ͼvP���Jմ��]��Ii�f[�W������YD��\t��Q՝4eΈ��k���j�F���������;@B�3���`a�T�	UK���q�+c��I;��'# t&gt;���ws����ZY ��0v��jŋ�,��A�ת��se��v#�I,�F}Ȫ�;�\VM��i��Ă7;c(�݃��Ԓ�13x'9N?:�n�U�����=N9�
+����I�c��GU�D�܌毒I]��U��ͬ��u���5�&lt;D���ed=��:Jͱ���{�������@��� ��[��yJ��ew����׵\[��稡'i���V��"�^���pz���_�]G*���&lt;��t�u�ZcAsM,M��$�S�3ӿ�W�J����vye�Lg��9���s��P��7#nތ���S�F};V�G$�4d�����q[v�m�6�Oqj�|)oΩ��d��о��p���2zT(��w��i�%ި����21�RF�k��l���k�..�[&lt;�m�A��Z��T�M�+���62����{V�XE�[~��Y#&lt;�|����j���Y?��6���]���s�&lt;�����'����\�Hפ��㌜��+{W��{��������@�	���&amp;jR�=����x܀�;���J{Y	M4��Io⻅�o1#�`��Nq[S��l��R3��A^{�
+�Ͻ��o�&lt;�G��'�}���Y�䵜�����O�is��r�w'���h���c�,��w~2	�\�	Th�zl�o�R$�Z�A�J�?�Z�Ú�l���'��	f$�=��¼㡆#Jk�H��gW��?�\M5O�qn��5e�h�bb�$Sd��Ny�g�QM�NE�Ш��H*=����e��]E-]�VK)�M��sU��&lt;��b5x�3�y)3������y��E�����Z��i��C�]����v�~\��e5/+�s��Oβ����ayt�E �����.�31�*�BK��'Z�W�V.��eͱ�C�;�09S�y�8eI;�z�\����G��o���Z�c�'1]#�I�v������tQM|�Σ�'�igOݣ �X�.��[C c��~MiZ_�!8�����J��5I�U`�����j*'�ʂ�n��?���\�i&amp;6[۩���������qs�hw�������m����PS~�h`���
+�X�v�L���#&gt;�[�XG9D8�ǹ��Q4n�Uз�#5�{����f'�,8ZΖ���2ȯ��3�=�:���j�JzM\�^�HH�!�!�G׸��'����z8q�8�4�/Q��;ٹ�N�����c���F֪8v�Ħ���m��v�֘M/'$��SHxS]�c��&amp;s��R`�&amp;���1��s���)��� 6������;����������ǳ=Kf��1����yc;e�F��O��\��}��t+�ݑ��Cq�P&lt;ʠ�f.�m�fEh%T�T�u%R� �&lt;�d?^��������O`�� ��Y��u�^�@�K�;I#n�_�^�*�|���P��ax���+�&lt;q��E_Vrשou
+��O�,��ԛ�&amp;s]Gg��O��h�r�3�r�=sGZUq�Ow�L�sI�:�[��z���'���+�XC09�1������[�~���-����z�
+���g@|F��E*�;���5J��Z��($1�L(���4���Єz*�RG�Y�dbq��L%T$`rI�K۵T�T�d�t&amp;.I�iիQ�4��2cq�|��VE�T�L�=zTqi֑ h�~OB;�*�Z��@�I�W�R��;���KV��3��Q��iI�*���̄�{�rG#��s{o��ถV��Z�g���f{�bU'b��0=�Ғ�q��澂]j��Ѣd�	q��+{�Wu���'���NO��Q텬�"F���~?:~�լι������{�ֆ�z��~�\K�H`ޕ�eu�ط8¸�8��i���t�C[��=Ây��k����Dؠ��8���Ԍ"�a�PI�}k:W�[��i6����j��q���cB7ŻT���t5r�C���TVH��Jd�Y}H��B�+������*Hߴdg�8�˨W���#��Xws42+��.07q�XK]�+��1o�ҺO ّ�##��I!B��r����&gt;�뙉r�r�s�nJ�ԯW��"ʂ}����ߝ���q�߿l2s�×Z��6��g�19'�y�YX�1$�5&gt;���w�1*�A�G�tG���cZ�ï �tq��R9�k���"�aQ�m(����hCl��f@9g�'�ڪG%�"rO?�pk�U%7�0��~�Z����I$��v9��֝�5���:0HQ�[��u�j�"V��-�7H�\{��i��WRoW1�	9&lt;�n?Z�ܞ��:L���+o����#9�sמ淮�q鑽��M����#=Nx�_L��3�	@��f��A�����4.�&amp;�Ȭv:�-��+��{��&lt;�J�{��"jRf�o5�[[�v :�Ԕ+:g`�׽C��
+�k��m��ѳ`I��{v�5��Xj2J�[NeIy����2;�vZ�jV&gt;u��FB�#��zg�+H���g'N��z��VK{�9#��K�h7;��(=��皿&gt;�ab����L�;�8��~����2��Z�.cSd�������x��H�*��1�O9�}(��L�M�Y;����B���ѫ@�F#�8�q�J�u�2�.�AR`�!���	s���VWx
+c�X�
+W���b�y��u%�,H#R0��+?ltF�S�ޞ��"H�s�q0B���:n�Q۞*��K�%����Wn`����dz��8�rCMIT���#�Tg�q��Ti�n[��q��Y}���J�N�_S��5�"Q�tP%��X�.9#�$��8�Xͤس���a��n%���&lt;���1��q��(%���&lt;d��[��4�l�~��h���1�'�ϸ⫛�q^��-�܏��岐0P���"������n����
+�~G5��j����ʼ��A�~~���Cs�q��$a�������I'��*GI+�	��XId�Y���00H�E&gt;M8���:�޹������W%e��2|����s��wm��.c_*v�C��A㞠���2[�8�K�v6��t����ǻ 3���t�s�8�s����-J��%-2*�QPu��|C�����H^G���Y��"�[�V��zIeX̱1����ߵ^��mX��hg�Ud�}���b9�6���r
+�#Zȭ���Fj\;����ķn�a�%r��b���HX��9��KQ2�~u�����7Q��Y����.��&amp;�_��M�t�2WGh%cJ���sՇ�ץ�C$�p���eZa������(�+�=O[�{�*����-�@,2EL/R*�qm2�M\�ֳ5hx��D98���`��fU,H�N咒&amp;iJ.,�e�F#�2�
+�
+��t�2V{��`����ݻ�Y���Wbua��EuO�%c��s]�R�13MJ���fu�]�ѣ�����7�[$M�FTpTg�����%����v(��T�SJ�]�"#4��1M�4g#��@�ʸ���Ṹ�&gt;Q
+?ϵUݎ���x�&amp;�э6�E�����J����u8\�3�Z$��m���M8
+hS��/�  ���HjB��b�[��?N��1ɣq�Ҁt� ��I�LȠ��J�[���A�H�;�F�t5!%��W�ۯ�`!X�d����`g�y��SRj�eB.nȚ�^�.��(�ԏ�v�6yJ��S�0
+Hz��`��f�����Ι\m&lt;�6�G�OΤg�&lt;��n+�Ƕ3�W�Rnrm��)��#��ZB\6����~$E��{+0���q�5�sqp6"0kn��[?@:V\�w��hc�����$R�ʺ� ��a��,�O�'��5�m����)�Bq�;GN\w���'���!�*P.����ʸ
+@�x]�����D��|�Gu�}�sТ!��ܶ���R[��w�K[$���$�����9-����L����x���|���M�O�&amp;0��c#�Lv�T���n�`�"o�%��N�� 1�������e&gt;���S.�ˌ�&lt;�2{V�V&lt;z���m&gt;�*A=���8Tm���j�n5��G���fH9�#�p:VO��mwS�Qg{����=�����&gt;���0�՚'_��Y�;yZkEp�A 1#=+]�-�v�܈�~����Zeݤ��̚N��r6V��Rq�׎���K~��x��F�	� �4�֧]�W���-�I,�X���Y��9a����U׆�GYe '��^ұ��[�m
+oU%��'�Π�+�z����mDC(�%���˒�՗�*b�&lt;[[0�3NǌtQPZZ=��A�s��cۢ.�4m5DE�m˷C��k~=3S�U�-�H�3�㚇��ۛU�MD�hWT�|d�:ڰ�K��������vJI��q�+�r�\з��M����/:�_�t83}:j�c�X�����W�T��=��A�2�x[&lt;m☪S���7T{vՄű��BӿΧn23�_Ú��Э~�	��$B����{W#}�{ĉ]8�pNy�1�V�k��E�s���˜��&gt;nGzg�ZҜ�M=�j)�r�2�ɦ�������9�q��N1��5+��h��{Kq�����:�=�
+��__�7��p��*�4lgߞ�^[7d�/!F#&gt;XV(?x��{�фT������mZI�Q��r�����j ��T��N�u����=̩��6F2=���M������X�ڇ���XJ�����ak��HL*�, ���d�'��Ҭ#F$@�Ȗ�1���u� g�ל��TҒ��*����^rs�kJ��Y�0[�}"�芀�lr��J0v	I�n�tP[^�����
+w�-��A�zV�&gt;�o�d��2~Q��{W9e{��#F����M����w��+Pe��n���L�!s�q���z�54���&gt;�$��ji�e���ck	*�铜��֭���h��n�9�ua/��[[gS��
+�9�Q���u��HGTs*�*{�������gIv���� �8�ӭ0x��AmR4|�I���z��ߏ��r�B���� V���pXw���ǩ�NK��.{Y&lt;��t�$q�z
+�ճ�֩EĹ╊�����2Ɂ�ry&lt;����nªN@&lt;��kB�������++�����q�u����ڍ��iQ��RN��JrOSX^*�X�d����	ʮX���e�-�:���W��T��q��޳S6O��y����i%,������j��#���W�T�&amp;���qSm_(�p���ݼ7-끞(���7��.��oǊ�n�A�,�J�Ӈ������=�Y��i�v�7���i�_�9�)��A"�Ƒy�#��^�j���:P��B��[������G2f{j6;��+��P��&lt;9'���h�ͳ���9$j	�(�SEhz��Eڣ�Hr3�T&lt;g$��kk��-o���� ����UX��_... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<status status="PASS" starttime="20240607 15:15:26.384" endtime="20240607 15:15:30.659"/>
+</kw>
+<msg timestamp="20240607 15:15:30.659" level="INFO">${get_response} = True</msg>
+<status status="PASS" starttime="20240607 15:15:26.383" endtime="20240607 15:15:30.659"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${get_response}'</arg>
+<arg>'True'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240607 15:15:30.661" endtime="20240607 15:15:30.661"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240607 15:15:30.662" endtime="20240607 15:15:33.755"/>
+</kw>
+<doc>Validate get all data to API and get response 200.
+The following steps are executed:</doc>
+<status status="PASS" starttime="20240607 15:15:21.927" endtime="20240607 15:15:33.757"/>
+</test>
+<doc>This test verifies that all the API functions retrieve a 200 response</doc>
+<status status="PASS" starttime="20240607 15:15:21.042" endtime="20240607 15:15:33.759"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-API-TC-010">Test-API-TC-010</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

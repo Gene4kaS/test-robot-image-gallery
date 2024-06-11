@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240606 11:06:16.686" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-GUI-TC-010" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite\Test-GUI-TC-010.robot">
+<test id="s1-t1" name="Test-GUI-TC-010" line="11">
+<kw name="Open NG GALLERY" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the NG GALLERY webpage</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240606 11:06:17.057" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002A1BD849828&gt;</msg>
+<status status="PASS" starttime="20240606 11:06:17.057" endtime="20240606 11:06:17.057"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240606 11:06:17.057" endtime="20240606 11:06:17.057"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240606 11:06:17.057" endtime="20240606 11:06:17.057"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240606 11:06:17.058" endtime="20240606 11:06:17.058"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240606 11:06:17.058" endtime="20240606 11:06:17.058"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240606 11:06:17.058" endtime="20240606 11:06:17.058"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240606 11:06:17.058" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite</msg>
+<status status="PASS" starttime="20240606 11:06:17.058" endtime="20240606 11:06:17.058"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240606 11:06:17.059" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240606 11:06:17.058" endtime="20240606 11:06:19.261"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240606 11:06:19.261" endtime="20240606 11:06:19.287"/>
+</kw>
+<status status="PASS" starttime="20240606 11:06:17.056" endtime="20240606 11:06:19.287"/>
+</kw>
+<status status="PASS" starttime="20240606 11:06:17.053" endtime="20240606 11:06:19.287"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_galleryl_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240606 11:06:19.288" level="INFO">Opening url 'http://localhost:80/'</msg>
+<status status="PASS" starttime="20240606 11:06:19.288" endtime="20240606 11:06:20.098"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-gallery-main-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240606 11:06:20.194" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-gallery-main-page.png"&gt;&lt;img src="ng-gallery-main-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240606 11:06:20.099" endtime="20240606 11:06:20.194"/>
+</kw>
+<status status="PASS" starttime="20240606 11:06:17.052" endtime="20240606 11:06:20.194"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20240606 11:06:20.195" endtime="20240606 11:06:20.196"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=NG-gallery-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240606 11:06:20.770" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="NG-gallery-page.png"&gt;&lt;img src="NG-gallery-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240606 11:06:20.197" endtime="20240606 11:06:20.770"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${RETRY_ATTEMPTS}</arg>
+<arg>${RETRY_INTERVAL}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${EUMETSAT_LOGO_BUTTON}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${EUMETSAT_LOGO_BUTTON}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240606 11:06:21.300" level="INFO">Current page contains element 'xpath://*[@class='navbar-item']/a'.</msg>
+<status status="PASS" starttime="20240606 11:06:20.772" endtime="20240606 11:06:21.300"/>
+</kw>
+<status status="PASS" starttime="20240606 11:06:20.771" endtime="20240606 11:06:21.300"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${EUMETSAT_LOGO_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240606 11:06:21.302" level="INFO">Clicking element 'xpath://*[@class='navbar-item']/a'.</msg>
+<status status="PASS" starttime="20240606 11:06:21.301" endtime="20240606 11:06:22.374"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>NEW</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20240606 11:06:22.375" endtime="20240606 11:06:24.469"/>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<var>${url}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20240606 11:06:25.500" level="INFO">${url} = https://www.eumetsat.int/</msg>
+<status status="PASS" starttime="20240606 11:06:24.470" endtime="20240606 11:06:25.500"/>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<arg>${url}</arg>
+<arg>https://www.eumetsat.int/</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" starttime="20240606 11:06:25.501" endtime="20240606 11:06:25.502"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=EUMETSAT-corporate-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240606 11:06:26.133" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="EUMETSAT-corporate-page.png"&gt;&lt;img src="EUMETSAT-corporate-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240606 11:06:25.502" endtime="20240606 11:06:26.135"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240606 11:06:26.135" endtime="20240606 11:06:29.324"/>
+</kw>
+<doc>Validates if the EUMESAT logo hyperlink leads to the EUMETSAT corporate website.
+The following steps are executed:
+- Open the NG Gallery page
+- Click on the EUMETSAT logo in the upper-left corner
+- Verify if EUMETSAT corporate website open</doc>
+<status status="PASS" starttime="20240606 11:06:17.050" endtime="20240606 11:06:29.325"/>
+</test>
+<doc>This test validates the access to https://www.eumetsat.int/ selecting the EUMETSAT logo.</doc>
+<status status="PASS" starttime="20240606 11:06:16.689" endtime="20240606 11:06:29.328"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-GUI-TC-010">Test-GUI-TC-010</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240607 10:34:40.103" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-GUI-TC-040" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite\Test-GUI-TC-040.robot">
+<test id="s1-t1" name="Test-GUI-TC-040" line="11">
+<kw name="Open NG GALLERY" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the NG GALLERY webpage</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240607 10:34:40.666" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x0000027F3FCD3E80&gt;</msg>
+<status status="PASS" starttime="20240607 10:34:40.666" endtime="20240607 10:34:40.666"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 10:34:40.667" endtime="20240607 10:34:40.667"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 10:34:40.667" endtime="20240607 10:34:40.667"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 10:34:40.667" endtime="20240607 10:34:40.668"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 10:34:40.668" endtime="20240607 10:34:40.668"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240607 10:34:40.668" endtime="20240607 10:34:40.668"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240607 10:34:40.668" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-UI\TestsSuite</msg>
+<status status="PASS" starttime="20240607 10:34:40.668" endtime="20240607 10:34:40.669"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240607 10:34:40.669" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240607 10:34:40.669" endtime="20240607 10:34:43.111"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240607 10:34:43.112" endtime="20240607 10:34:43.134"/>
+</kw>
+<status status="PASS" starttime="20240607 10:34:40.665" endtime="20240607 10:34:43.135"/>
+</kw>
+<status status="PASS" starttime="20240607 10:34:40.659" endtime="20240607 10:34:43.135"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_galleryl_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240607 10:34:43.136" level="INFO">Opening url 'http://localhost:80/'</msg>
+<status status="PASS" starttime="20240607 10:34:43.135" endtime="20240607 10:34:44.000"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-gallery-main-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 10:34:44.117" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-gallery-main-page.png"&gt;&lt;img src="ng-gallery-main-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 10:34:44.001" endtime="20240607 10:34:44.117"/>
+</kw>
+<status status="PASS" starttime="20240607 10:34:40.658" endtime="20240607 10:34:44.118"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>${SELENIUM_SPEED}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20240607 10:34:44.119" endtime="20240607 10:34:44.119"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 10:34:44.123" level="INFO">Clicking element 'xpath://*[@class='mat-mdc-select-value']'.</msg>
+<status status="PASS" starttime="20240607 10:34:44.120" endtime="20240607 10:34:45.298"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DROP_DOWN_BOX_PRODUCT_TYPE}//*[contains(text(),' MSGIODC Imagery ')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 10:34:45.301" level="INFO">Clicking element 'xpath://*[@id='cdk-overlay-0']//*[contains(text(),' MSGIODC Imagery ')]'.</msg>
+<status status="PASS" starttime="20240607 10:34:45.299" endtime="20240607 10:34:46.420"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LIST_BOX_LAYERS}//*[contains(text(),'High Rate SEVIRI IR3.9 \u03bcm Image - MSG - Indian Ocean')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 10:34:46.423" level="INFO">Clicking element 'xpath://*[@role="listbox"]//*[contains(text(),'High Rate SEVIRI IR3.9 μm Image - MSG - Indian Ocean')]'.</msg>
+<status status="PASS" starttime="20240607 10:34:46.422" endtime="20240607 10:34:47.521"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240607 10:34:52.531" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20240607 10:34:47.522" endtime="20240607 10:34:52.531"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=product-type-regions.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 10:34:53.117" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="product-type-regions.png"&gt;&lt;img src="product-type-regions.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 10:34:52.532" endtime="20240607 10:34:53.117"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DOWNLOAD_BUTTON}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 10:34:53.118" level="INFO">Clicking element 'xpath://mat-icon'.</msg>
+<status status="PASS" starttime="20240607 10:34:53.117" endtime="20240607 10:34:54.188"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${RETRY_ATTEMPTS}</arg>
+<arg>${RETRY_INTERVAL}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'JPEG')]</arg>
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'PNG')]</arg>
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'TIFF')]</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'JPEG')]</arg>
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'PNG')]</arg>
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'TIFF')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20240607 10:34:54.714" level="INFO">Current page contains element 'xpath://*[@class="mat-mdc-menu-content"]//*[contains(text(),'JPEG')]'.</msg>
+<status status="PASS" starttime="20240607 10:34:54.191" endtime="20240607 10:34:54.714"/>
+</kw>
+<status status="PASS" starttime="20240607 10:34:54.188" endtime="20240607 10:34:54.714"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=dowload-button-list-image-type.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240607 10:34:55.297" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="dowload-button-list-image-type.png"&gt;&lt;img src="dowload-button-list-image-type.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240607 10:34:54.715" endtime="20240607 10:34:55.297"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${prefs}</var>
+<arg>download.default_directory=${DOWNLOAD_DIR}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20240607 10:34:55.299" level="INFO">${prefs} = {'download.default_directory': 'Downloads'}</msg>
+<status status="PASS" starttime="20240607 10:34:55.298" endtime="20240607 10:34:55.299"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${DOWNLOAD_BUTTON_LIST}//*[contains(text(),'JPEG')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20240607 10:34:55.300" level="INFO">Clicking element 'xpath://*[@class="mat-mdc-menu-content"]//*[contains(text(),'JPEG')]'.</msg>
+<status status="PASS" starttime="20240607 10:34:55.299" endtime="20240607 10:34:56.369"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>20s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20240607 10:35:16.375" level="INFO">Slept 20 seconds</msg>
+<status status="PASS" starttime="20240607 10:34:56.369" endtime="20240607 10:35:16.375"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>30s</arg>
+<arg>2s</arg>
+<arg>File Should Exist</arg>
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:16.382" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:16.382" endtime="20240607 10:35:16.382"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:18.396" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:18.395" endtime="20240607 10:35:18.396"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:20.411" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:20.410" endtime="20240607 10:35:20.411"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:22.423" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:22.423" endtime="20240607 10:35:22.423"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:24.433" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:24.433" endtime="20240607 10:35:24.435"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:26.455" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:26.455" endtime="20240607 10:35:26.455"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:28.471" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:28.471" endtime="20240607 10:35:28.471"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:30.489" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:30.489" endtime="20240607 10:35:30.489"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:32.502" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:32.502" endtime="20240607 10:35:32.502"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:34.521" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:34.521" endtime="20240607 10:35:34.521"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:36.528" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:36.527" endtime="20240607 10:35:36.528"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:38.542" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:38.541" endtime="20240607 10:35:38.542"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:40.548" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:40.548" endtime="20240607 10:35:40.548"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:42.564" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:42.564" endtime="20240607 10:35:42.564"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:44.586" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:44.586" endtime="20240607 10:35:44.586"/>
+</kw>
+<kw name="File Should Exist">
+<arg>${DOWNLOAD_DIR}/map.jpeg</arg>
+<msg timestamp="20240607 10:35:46.604" level="FAIL">No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:46.604" endtime="20240607 10:35:46.604"/>
+</kw>
+<msg timestamp="20240607 10:35:46.604" level="FAIL">Keyword 'File Should Exist' failed after retrying for 30 seconds. The last error was: No keyword with name 'File Should Exist' found.</msg>
+<status status="FAIL" starttime="20240607 10:35:16.376" endtime="20240607 10:35:46.604"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240607 10:35:46.605" endtime="20240607 10:35:49.782"/>
+</kw>
+<doc>Verify the download button.
+The following steps are executed:
+- Open the NG Gallery page
+- Click on the drop down box
+- Click on the product type 'Meteosat 0 degree Imagery'
+- Click on the product type 'MSGIODC RGB Composites' (one of the type 41 degree)
+- Verify that all layers of thet type exist</doc>
+<status status="FAIL" starttime="20240607 10:34:40.655" endtime="20240607 10:35:49.783">Keyword 'File Should Exist' failed after retrying for 30 seconds. The last error was: No keyword with name 'File Should Exist' found.</status>
+</test>
+<doc>Shall be possible to download the currently displayed region by just clicking on a button and choose the type which we need: jpeg, png, tiff. The output image should contain a footer with the EUMETSAT logo and timestamp of the selected layer.</doc>
+<status status="FAIL" starttime="20240607 10:34:40.107" endtime="20240607 10:35:49.786"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Test-GUI-TC-040">Test-GUI-TC-040</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

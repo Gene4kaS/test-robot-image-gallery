@@ -1,0 +1,13 @@
+## Test Suite - command line
+#
+#
+#robot --outputdir ../Reports/Test-XXX --logtitle Test-XXX --reporttitle Test-XXX TestSuite-XX/TestSuites/Test-XXX.robot
+#
+#robot --outputdir ../../Reports/TestSuite-API/Test-API-TC-010.robot --logtitle Test-API-TC-010 --reporttitle Test-API-TC-010 Test-API-TC-010.robot
+#robot --outputdir ../../Reports/TestSuite-API/Test-API-TC-020.robot --logtitle Test-API-TC-020 --reporttitle Test-API-TC-020 Test-API-TC-020.robot
+#robot --outputdir ../../Reports/TestSuite-API/Test-API-TC-030.robot --logtitle Test-API-TC-030 --reporttitle Test-API-TC-030 Test-API-TC-030.robot
+#robot --outputdir ../../Reports/TestSuite-API/Test-API-TC-040.robot --logtitle Test-API-TC-040 --reporttitle Test-API-TC-040 Test-API-TC-040.robot
+#robot --outputdir ../../Reports/TestSuite-API/Test-API-TC-050.robot --logtitle Test-API-TC-050 --reporttitle Test-API-TC-050 Test-API-TC-050.robot
+#robot --outputdir ../../Reports/TestSuite-API/Test-API-TC-060.robot --logtitle Test-API-TC-060 --reporttitle Test-API-TC-060 Test-API-TC-060.robot
+
+

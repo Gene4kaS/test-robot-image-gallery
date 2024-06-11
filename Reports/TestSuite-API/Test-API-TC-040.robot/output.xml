@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.6.8 on win32)" generated="20240611 10:30:53.723" rpa="false" schemaversion="4">
+<suite id="s1" name="Test-API-TC-040" source="C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite\Test-API-TC-040.robot">
+<test id="s1-t1" name="Test-API-TC-030" line="11">
+<kw name="Open API" library="commonKeywords" type="SETUP">
+<doc>Open the web browser passed as argument (default browser is chrome) and open the API page</doc>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Setup ${browser}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Setup chrome" library="commonKeywords">
+<doc>Configure the google chrome webdriver</doc>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options_chrome}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20240611 10:30:54.650" level="INFO">${options_chrome} = &lt;selenium.webdriver.chrome.options.Options object at 0x00000251A3236DA0&gt;</msg>
+<status status="PASS" starttime="20240611 10:30:54.650" endtime="20240611 10:30:54.651"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:30:54.651" endtime="20240611 10:30:54.652"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>headless</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:30:54.652" endtime="20240611 10:30:54.652"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>enable-automation</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:30:54.653" endtime="20240611 10:30:54.653"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>disable-gpu</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:30:54.653" endtime="20240611 10:30:54.654"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options_chrome}</arg>
+<arg>add_argument</arg>
+<arg>force-device-scale-factor\=0.65</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20240611 10:30:54.654" endtime="20240611 10:30:54.655"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${EXECDIR}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20240611 10:30:54.655" level="INFO">C:\Users\ysavchenko\Documents\Projects\EMSDATES\DVUM\test-robot-image-gallery\TestSuite-API\TestsSuite</msg>
+<status status="PASS" starttime="20240611 10:30:54.655" endtime="20240611 10:30:54.655"/>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<arg>driver_name=Chrome</arg>
+<arg>executable_path=${EXECDIR}/Runners/chromedriver.exe</arg>
+<arg>chrome_options=${options_chrome}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20240611 10:30:54.656" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20240611 10:30:54.655" endtime="20240611 10:30:57.314"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20240611 10:30:57.314" endtime="20240611 10:30:57.421"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:54.649" endtime="20240611 10:30:57.422"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:54.643" endtime="20240611 10:30:57.422"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ng_api_page}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20240611 10:30:57.422" level="INFO">Opening url 'http://localhost:5000/'</msg>
+<status status="PASS" starttime="20240611 10:30:57.422" endtime="20240611 10:30:58.701"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<arg>filename=ng-api-page.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20240611 10:30:58.923" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="ng-api-page.png"&gt;&lt;img src="ng-api-page.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20240611 10:30:58.701" endtime="20240611 10:30:58.923"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:54.642" endtime="20240611 10:30:58.924"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>API_testing</arg>
+<arg>${api_base_endpoint}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20240611 10:30:58.925" level="INFO">Creating Session using : alias=API_testing, url=http://localhost:5000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20240611 10:30:58.924" endtime="20240611 10:30:58.925"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>API_testing</arg>
+<arg>list-regions</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20240611 10:30:58.960" level="INFO">GET Request : url=http://localhost:5000/list-regions 
+ path_url=/list-regions 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20240611 10:30:58.960" level="INFO">GET Response : url=http://localhost:5000/list-regions 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/2.2.2 Python/3.9.19', 'Date': 'Tue, 11 Jun 2024 09:30:58 GMT', 'Content-Type': 'application/json', 'Content-Length': '726', 'Access-Control-Allow-Origin': '*', 'Connection': 'close'} 
+ body={"regions": {"earth": ["-77.0", "-77.0", "77.0", "77.0"], "northamerica": ["-166", "7", "-52", "77"], "southamerica": ["-87", "-58", "-33", "13"], "europe": ["-11", "34", "32", "64"], "africa": ["-18", "-36", "53", "38"]}, "_links": {"add region=earth as image parameter": "http://172.17.0.2:5000/add-parameter?region=earth", "add region=northamerica as image parameter": "http://172.17.0.2:5000/add-parameter?region=northamerica", "add region=southamerica as image parameter": "http://172.17.0.2:5000/add-parameter?region=southamerica", "add region=europe as image parameter": "http://172.17.0.2:5000/add-parameter?region=europe", "add region=africa as image parameter": "http://172.17.0.2:5000/add-parameter?region=africa"}} 
+ </msg>
+<msg timestamp="20240611 10:30:58.960" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20240611 10:30:58.926" endtime="20240611 10:30:58.960"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${json_response}</var>
+<arg>${get_response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20240611 10:30:58.963" level="INFO">${json_response} = {'regions': {'earth': ['-77.0', '-77.0', '77.0', '77.0'], 'northamerica': ['-166', '7', '-52', '77'], 'southamerica': ['-87', '-58', '-33', '13'], 'europe': ['-11', '34', '32', '64'], 'africa': ['-18'...</msg>
+<status status="PASS" starttime="20240611 10:30:58.961" endtime="20240611 10:30:58.963"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${regions_count}</var>
+<arg>${json_response['regions']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:58.970" level="INFO">Length is 5</msg>
+<msg timestamp="20240611 10:30:58.970" level="INFO">${regions_count} = 5</msg>
+<status status="PASS" starttime="20240611 10:30:58.968" endtime="20240611 10:30:58.985"/>
+</kw>
+<kw name="Should Be Larger Than" library="commonKeywords">
+<arg>${regions_count}</arg>
+<arg>0</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${value_1} &lt;= ${value_2}</arg>
+<arg>Fail</arg>
+<arg>The value ${value_1} is not larger than ${value_2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240611 10:30:58.987" endtime="20240611 10:30:58.987"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:58.986" endtime="20240611 10:30:58.987"/>
+</kw>
+<for flavor="IN">
+<var>${item}</var>
+<value>@{json_response['regions']}</value>
+<iter>
+<var name="${item}">earth</var>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>${json_response['regions']['${item}']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:58.991" level="INFO">Length is 4</msg>
+<msg timestamp="20240611 10:30:58.991" level="INFO">${length} = 4</msg>
+<status status="PASS" starttime="20240611 10:30:58.990" endtime="20240611 10:30:58.991"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${length}'</arg>
+<arg>'4'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240611 10:30:58.991" endtime="20240611 10:30:58.992"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:58.989" endtime="20240611 10:30:58.992"/>
+</iter>
+<iter>
+<var name="${item}">northamerica</var>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>${json_response['regions']['${item}']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:58.993" level="INFO">Length is 4</msg>
+<msg timestamp="20240611 10:30:58.993" level="INFO">${length} = 4</msg>
+<status status="PASS" starttime="20240611 10:30:58.992" endtime="20240611 10:30:58.994"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${length}'</arg>
+<arg>'4'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240611 10:30:58.994" endtime="20240611 10:30:58.994"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:58.992" endtime="20240611 10:30:58.994"/>
+</iter>
+<iter>
+<var name="${item}">southamerica</var>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>${json_response['regions']['${item}']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:58.996" level="INFO">Length is 4</msg>
+<msg timestamp="20240611 10:30:58.996" level="INFO">${length} = 4</msg>
+<status status="PASS" starttime="20240611 10:30:58.994" endtime="20240611 10:30:58.996"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${length}'</arg>
+<arg>'4'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240611 10:30:58.996" endtime="20240611 10:30:58.997"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:58.994" endtime="20240611 10:30:58.997"/>
+</iter>
+<iter>
+<var name="${item}">europe</var>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>${json_response['regions']['${item}']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:58.998" level="INFO">Length is 4</msg>
+<msg timestamp="20240611 10:30:58.998" level="INFO">${length} = 4</msg>
+<status status="PASS" starttime="20240611 10:30:58.997" endtime="20240611 10:30:58.998"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${length}'</arg>
+<arg>'4'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240611 10:30:58.999" endtime="20240611 10:30:58.999"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:58.997" endtime="20240611 10:30:58.999"/>
+</iter>
+<iter>
+<var name="${item}">africa</var>
+<kw name="Get Length" library="BuiltIn">
+<var>${length}</var>
+<arg>${json_response['regions']['${item}']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:59.001" level="INFO">Length is 4</msg>
+<msg timestamp="20240611 10:30:59.001" level="INFO">${length} = 4</msg>
+<status status="PASS" starttime="20240611 10:30:58.999" endtime="20240611 10:30:59.001"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>'${length}'</arg>
+<arg>'4'</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20240611 10:30:59.001" endtime="20240611 10:30:59.002"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:58.999" endtime="20240611 10:30:59.002"/>
+</iter>
+<status status="PASS" starttime="20240611 10:30:58.988" endtime="20240611 10:30:59.002"/>
+</for>
+<kw name="Get Length" library="BuiltIn">
+<var>${count}</var>
+<arg>${json_response['_links']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20240611 10:30:59.006" level="INFO">Length is 5</msg>
+<msg timestamp="20240611 10:30:59.006" level="INFO">${count} = 5</msg>
+<status status="PASS" starttime="20240611 10:30:59.004" endtime="20240611 10:30:59.006"/>
+</kw>
+<kw name="Should Be Larger Than" library="commonKeywords">
+<arg>${count}</arg>
+<arg>0</arg>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${value_1} &lt;= ${value_2}</arg>
+<arg>Fail</arg>
+<arg>The value ${value_1} is not larger than ${value_2}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20240611 10:30:59.009" endtime="20240611 10:30:59.010"/>
+</kw>
+<status status="PASS" starttime="20240611 10:30:59.009" endtime="20240611 10:30:59.010"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20240611 10:30:59.014" endtime="20240611 10:31:03.295"/>
+</kw>
+<doc>Verify call endpoint and check payload contains a dictionary with elements length 4 (for a valid coordinate)
+The following steps are executed:
+- Open the API page
+- Call list-regions
+- Verify if the values all contain 4 values (valid coordinates for a box)</doc>
+<status status="PASS" starttime="20240611 10:30:54.638" endtime="20240611 10:31:03.295"/>
+</test>
+<doc>This test verifies that the API functions retrieve coordinates for each region.</doc>
+<status status="PASS" starttime="20240611 10:30:53.727" endtime="20240611 10:31:03.297"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Test-API-TC-040">Test-API-TC-040</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
